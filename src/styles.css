@@ -142,3 +142,24 @@
     color: var(--color-foreground);
   }
 }
+
+/* Webinar brand theme */
+:root {
+  --background: oklch(0.985 0.012 85);
+  --foreground: oklch(0.22 0.03 180);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.03 180);
+  --primary: oklch(0.42 0.08 175);
+  --primary-foreground: oklch(0.985 0.012 85);
+  --secondary: oklch(0.94 0.03 85);
+  --secondary-foreground: oklch(0.25 0.04 180);
+  --muted: oklch(0.95 0.015 85);
+  --muted-foreground: oklch(0.45 0.03 180);
+  --accent: oklch(0.78 0.13 70);
+  --accent-foreground: oklch(0.22 0.03 180);
+  --border: oklch(0.9 0.02 85);
+  --input: oklch(0.88 0.02 85);
+  --ring: oklch(0.42 0.08 175);
+}
+body { font-family: "Manrope", system-ui, sans-serif; }
+.font-display { font-family: "Fraunces", Georgia, serif; }
