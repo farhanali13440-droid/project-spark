@@ -18,9 +18,12 @@ export type Database = {
         Row: {
           admin_note: string | null
           amount: number
+          city: string | null
           created_at: string
+          email: string | null
           full_name: string
           id: string
+          learn_goal: string | null
           method: string
           reviewed_at: string | null
           screenshot_path: string
@@ -31,9 +34,12 @@ export type Database = {
         Insert: {
           admin_note?: string | null
           amount?: number
+          city?: string | null
           created_at?: string
+          email?: string | null
           full_name: string
           id?: string
+          learn_goal?: string | null
           method: string
           reviewed_at?: string | null
           screenshot_path: string
@@ -44,9 +50,12 @@ export type Database = {
         Update: {
           admin_note?: string | null
           amount?: number
+          city?: string | null
           created_at?: string
+          email?: string | null
           full_name?: string
           id?: string
+          learn_goal?: string | null
           method?: string
           reviewed_at?: string | null
           screenshot_path?: string
