@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent, type ReactNode } from "react";
-import { z } from "zod";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import {
   Activity,
   ArrowRight,
@@ -98,81 +97,40 @@ const CONTENT = {
   faqs: [
     { q: "What is this webinar about?", a: "It explains how root-cause testing can help with Cancer, Digestive Disorders, Autism, PCOS, Food Allergies and Heavy Metal exposure." },
     { q: "How much does registration cost?", a: "Registration is a one-time fee of PKR 499." },
-    { q: "How do I register?", a: "Fill in your name, WhatsApp number and email in the form, then complete the payment on the next page." },
+    { q: "How do I register?", a: "Fill in your name, WhatsApp number and email on the checkout page, then complete the payment." },
     { q: "Can I ask my own questions?", a: "Yes. There is a live Q&A where you can ask about your own health concerns." },
     { q: "Will this replace my doctor's treatment?", a: "No. The webinar is educational only and does not replace professional medical advice. Don't change any medication without speaking to your doctor." },
   ],
 };
 
-const schema = z.object({
-  name: z.string().trim().min(2, "Please enter your full name").max(100),
-  whatsapp: z
-    .string()
-    .trim()
-    .regex(/^\+?[0-9\s-]{10,16}$/, "Enter a valid WhatsApp number"),
-  email: z.string().trim().email("Enter a valid email").max(255),
-});
-
-type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
-
-function RegistrationForm() {
-  const [errors, setErrors] = useState<Errors>({});
-  const [loading, setLoading] = useState(false);
-
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-    const result = schema.safeParse(data);
-    if (!result.success) {
-      const errs: Errors = {};
-      for (const issue of result.error.issues) errs[issue.path[0] as keyof Errors] ??= issue.message;
-      setErrors(errs);
-      return;
-    }
-    setErrors({});
-    setLoading(true);
-    const list = JSON.parse(localStorage.getItem("registrations") ?? "[]");
-    list.push({ ...result.data, createdAt: new Date().toISOString() });
-    localStorage.setItem("registrations", JSON.stringify(list));
-    localStorage.setItem("currentRegistration", JSON.stringify(result.data));
-    window.location.assign("/payment");
-  }
-
-  const field =
-    "w-full rounded-xl border border-input bg-background px-4 py-3 text-base outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/20";
-
+function CheckoutCard() {
   return (
-    <form onSubmit={onSubmit} noValidate className="overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
-      <div className="bg-gradient-brand px-6 py-5 text-center text-primary-foreground sm:px-8">
+    <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
+      <div className="bg-gradient-brand px-6 py-8 text-center text-primary-foreground sm:px-8">
         <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-90">Reserve your seat</p>
-        <p className="mt-1 font-display text-4xl font-bold">{CONTENT.fee}</p>
+        <p className="mt-1 font-display text-5xl font-bold">{CONTENT.fee}</p>
         <p className="text-sm opacity-85">One-time registration fee</p>
       </div>
-      <div className="space-y-4 p-6 sm:p-8">
-        {([
-          ["name", "Full Name", "text", "e.g. Ayesha Khan"],
-          ["whatsapp", "WhatsApp Number", "tel", "+92 300 1234567"],
-          ["email", "Email Address", "email", "you@example.com"],
-        ] as const).map(([name, label, type, ph]) => (
-          <label key={name} className="block">
-            <span className="mb-1.5 block text-sm font-medium text-foreground">{label}</span>
-            <input name={name} type={type} placeholder={ph} className={field} aria-invalid={!!errors[name]} />
-            {errors[name] && <span className="mt-1 block text-sm text-destructive">{errors[name]}</span>}
-          </label>
-        ))}
-        <button
-          type="submit"
-          disabled={loading}
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-4 text-base font-bold text-primary-foreground shadow-soft transition hover:opacity-95 disabled:opacity-70"
+      <div className="space-y-5 p-6 sm:p-8">
+        <ul className="space-y-3">
+          {["Live webinar access", "All 7 topics covered", "Live Q&A session", "Community access"].map((b) => (
+            <li key={b} className="flex items-center gap-3">
+              <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" />
+              <span className="font-medium">{b}</span>
+            </li>
+          ))}
+        </ul>
+        <Link
+          to="/checkout"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-4 text-base font-bold text-primary-foreground shadow-soft transition hover:opacity-95"
         >
-          {loading ? "Saving…" : `Register Now — ${CONTENT.fee}`}
-          {!loading && <ArrowRight className="h-4 w-4" />}
-        </button>
+          Register Now — {CONTENT.fee} <ArrowRight className="h-4 w-4" />
+        </Link>
         <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-          <ShieldCheck className="h-4 w-4" /> Your details are kept private.
+          <ShieldCheck className="h-4 w-4" /> Secure checkout — takes 2 minutes.
         </p>
       </div>
-    </form>
+    </div>
   );
 }
 
@@ -197,7 +155,7 @@ function SectionHead({ pill, title, text }: { pill: string; title: string; text?
 function CtaButton({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <a
-      href="#register"
+      href="/checkout"
       className={`inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-7 py-4 text-base font-bold text-primary-foreground shadow-soft transition hover:opacity-95 ${className}`}
     >
       {children} <ArrowRight className="h-4 w-4 shrink-0" />
@@ -224,7 +182,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3.5">
           <Brand />
           <a
-            href="#register"
+            href="/checkout"
             className="inline-flex shrink-0 items-center gap-2 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-soft"
           >
             Join for {CONTENT.fee} <ArrowRight className="h-4 w-4" />
@@ -260,7 +218,7 @@ function Index() {
             </div>
           </div>
           <div id="register" className="scroll-mt-24">
-            <RegistrationForm />
+            <CheckoutCard />
           </div>
         </div>
       </section>
@@ -441,7 +399,7 @@ function Index() {
             Your health deserves more than guesswork. Get the knowledge to take the right next step.
           </p>
           <a
-            href="#register"
+            href="/checkout"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-bold text-accent-foreground transition hover:opacity-90"
           >
             Register Now for {CONTENT.fee} <ArrowRight className="h-4 w-4" />
