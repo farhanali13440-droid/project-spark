@@ -147,27 +147,50 @@
   }
 }
 
-/* Webinar brand theme */
+/* Academy of Champions brand theme — navy blue, sky blue, and white */
 :root {
-  --background: oklch(0.985 0.012 85);
-  --foreground: oklch(0.22 0.03 180);
+  --background: oklch(0.99 0.006 240);
+  --foreground: oklch(0.27 0.085 255);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.03 180);
-  --primary: oklch(0.42 0.08 175);
-  --primary-foreground: oklch(0.985 0.012 85);
-  --secondary: oklch(0.94 0.03 85);
-  --secondary-foreground: oklch(0.25 0.04 180);
-  --muted: oklch(0.95 0.015 85);
-  --muted-foreground: oklch(0.45 0.03 180);
-  --accent: oklch(0.78 0.13 70);
-  --accent-foreground: oklch(0.22 0.03 180);
-  --border: oklch(0.9 0.02 85);
-  --input: oklch(0.88 0.02 85);
-  --ring: oklch(0.42 0.08 175);
+  --card-foreground: oklch(0.27 0.085 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.27 0.085 255);
+  --primary: oklch(0.32 0.105 255);
+  --primary-foreground: oklch(0.99 0.006 240);
+  --secondary: oklch(0.95 0.025 230);
+  --secondary-foreground: oklch(0.27 0.085 255);
+  --muted: oklch(0.96 0.018 230);
+  --muted-foreground: oklch(0.48 0.045 255);
+  --accent: oklch(0.7 0.14 230);
+  --accent-foreground: oklch(0.2 0.07 255);
+  --border: oklch(0.89 0.025 235);
+  --input: oklch(0.89 0.025 235);
+  --ring: oklch(0.62 0.14 230);
 }
+
+.dark {
+  --background: oklch(0.18 0.055 255);
+  --foreground: oklch(0.97 0.012 230);
+  --card: oklch(0.23 0.06 255);
+  --card-foreground: oklch(0.97 0.012 230);
+  --popover: oklch(0.23 0.06 255);
+  --popover-foreground: oklch(0.97 0.012 230);
+  --primary: oklch(0.72 0.14 230);
+  --primary-foreground: oklch(0.18 0.055 255);
+  --secondary: oklch(0.27 0.065 255);
+  --secondary-foreground: oklch(0.97 0.012 230);
+  --muted: oklch(0.27 0.065 255);
+  --muted-foreground: oklch(0.76 0.035 235);
+  --accent: oklch(0.72 0.14 230);
+  --accent-foreground: oklch(0.18 0.055 255);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.14 230);
+}
+
 :root {
-  --primary-glow: oklch(0.62 0.1 175);
-  --gradient-primary: linear-gradient(120deg, var(--primary), var(--primary-glow));
+  --primary-glow: oklch(0.7 0.14 230);
+  --gradient-primary: linear-gradient(120deg, oklch(0.32 0.105 255), oklch(0.62 0.15 230));
   --shadow-soft: 0 18px 40px -20px color-mix(in oklab, var(--primary) 35%, transparent);
 }
 body { font-family: "Manrope", system-ui, sans-serif; }
