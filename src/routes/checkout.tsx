@@ -54,7 +54,7 @@ const input =
   "w-full rounded-full border border-input bg-background px-5 py-3 text-base outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/20";
 const card = "rounded-3xl border border-border bg-card shadow-lg shadow-primary/5";
 
-function Label({ children, optional }: { children: string; optional?: boolean }) {
+function Label({ children, optional }: { children: string; optional?: boolean | undefined }) {
   return (
     <span className="mb-1.5 block text-sm font-semibold text-foreground">
       {children}{" "}
@@ -63,7 +63,7 @@ function Label({ children, optional }: { children: string; optional?: boolean })
   );
 }
 
-function Err({ msg }: { msg?: string }) {
+function Err({ msg }: { msg?: string | undefined }) {
   return msg ? <span className="mt-1 block pl-2 text-sm text-destructive">{msg}</span> : null;
 }
 
