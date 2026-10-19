@@ -26,6 +26,9 @@ type Payment = {
   whatsapp: string;
   method: string;
   transaction_id: string;
+  email: string | null;
+  city: string | null;
+  learn_goal: string | null;
   screenshot_path: string;
   status: string;
   created_at: string;
@@ -140,6 +143,8 @@ function Dashboard({ userId }: { userId: string }) {
             <div className="text-sm">
               <p className="text-base font-bold">{p.full_name}</p>
               <p className="text-muted-foreground">{p.whatsapp} · {PAYMENT_METHODS.find((m) => m.id === p.method)?.name}</p>
+              {(p.email || p.city) && <p className="text-muted-foreground">{[p.email, p.city].filter(Boolean).join(" · ")}</p>}
+              {p.learn_goal && <p className="italic text-muted-foreground">"{p.learn_goal}"</p>}
               <p>Txn: <span className="font-mono">{p.transaction_id}</span></p>
               <p className="text-xs text-muted-foreground">{new Date(p.created_at).toLocaleString()}</p>
             </div>
