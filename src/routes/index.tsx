@@ -27,10 +27,9 @@ const topics = [
   { icon: HelpCircle, title: "When Doctors Have No Answers", text: "Prepare informed questions and consider next steps when symptoms remain unexplained." },
 ];
 const benefits = [
-  { icon: Stethoscope, title: "A clearer health perspective", text: "Understand how symptoms, health history and testing fit together." },
-  { icon: FlaskConical, title: "More informed testing decisions", text: "Learn which questions to ask before choosing a test." },
-  { icon: MessageCircleQuestion, title: "Live questions, thoughtful discussion", text: "Bring your concerns to the live Q&A session." },
-  { icon: Users, title: "Stay connected", text: "Community access for webinar updates and joining instructions." },
+  { icon: Stethoscope, title: "Understand Complex Health Topics", text: "Explore cancer, digestive disorders, PCOS, autism, and other important health subjects in one educational session." },
+  { icon: FlaskConical, title: "Learn About Health Testing", text: "Discover key considerations around food allergy testing and heavy metal testing, and understand why professional interpretation matters." },
+  { icon: Sparkles, title: "Become a More Informed Health Advocate", text: "Learn to ask better questions, seek reliable health information, and have more informed conversations with healthcare professionals." },
 ];
 const audience = [
   "People with recurring digestive problems",
@@ -79,7 +78,7 @@ function Index() {
     </section>
 
     {/* 2. Why attend */}
-    <section className="py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="Make sense of your health" title="Why Attend This Webinar?" text="Move beyond uncertainty with knowledge you can bring to your next health conversation." /><div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{benefits.map(({ icon: Icon, title, text }) => <div key={title} className="rounded-lg border border-border bg-card p-6"><Icon className="h-7 w-7 text-primary" /><h3 className="mt-5 text-lg font-bold">{title}</h3><p className="mt-3 text-sm text-muted-foreground">{text}</p></div>)}</div></div></section>
+    <section className="py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="WHY THIS WEBINAR MATTERS" title="Your Health Deserves More Than Guesswork" text="When health concerns persist and answers are unclear, knowing what questions to ask and what information to seek can make a difference." /><p className="mx-auto mt-5 max-w-3xl text-center text-muted-foreground">This educational webinar will help you explore important health topics and develop a better understanding of your health-related concerns.</p><div className="mt-10 grid gap-6 md:grid-cols-3">{benefits.map(({ icon: Icon, title, text }) => <div key={title} className="rounded-lg border border-border bg-card p-6"><Icon className="h-7 w-7 text-primary" /><h3 className="mt-5 text-lg font-bold">{title}</h3><p className="mt-3 text-sm text-muted-foreground">{text}</p></div>)}</div><div className="mt-8 text-center"><p className="font-bold">Your health journey starts with knowledge.</p><Cta className="mt-5">Register Now — {PAYMENT_AMOUNT}</Cta></div></div></section>
 
     {/* 3. Topics */}
     <section id="learn" className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="Seven focused topics" title="What Will You Learn?" text="A practical overview of health conditions and testing considerations, with room for your questions." /><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{topics.map(({ icon: Icon, title, text }, i) => <div key={title} className="rounded-lg border border-border bg-card p-6"><div className="flex items-center justify-between"><span className="font-display text-2xl font-bold text-primary">{String(i + 1).padStart(2, "0")}</span><Icon className="h-6 w-6 text-primary" /></div><h3 className="mt-4 font-display text-xl font-bold">{title}</h3><p className="mt-3 text-sm text-muted-foreground">{text}</p></div>)}</div></div></section>
