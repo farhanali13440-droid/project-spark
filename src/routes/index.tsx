@@ -169,7 +169,7 @@ function Brand({ className = "h-10 sm:h-12" }: { className?: string }) {
     <img
       src={logoAsset.url}
       alt="The Academy of Champions logo"
-      className={`w-auto shrink-0 object-contain ${className}`}
+      className={`w-auto shrink-0 object-contain mix-blend-multiply ${className}`}
     />
   );
 }
