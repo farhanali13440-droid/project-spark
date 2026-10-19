@@ -181,16 +181,19 @@ function CheckoutPage() {
 
         {step === 3 ? (
           <section className={`${card} mx-auto mt-8 max-w-xl p-8 text-center`}>
-            <div className="mx-auto mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/20 text-accent-foreground">
-              <Clock className="h-8 w-8" />
+            <div className="mx-auto mb-5 inline-flex h-16 w-16 items-center justify-center rounded-full bg-whatsapp/15 text-whatsapp">
+              <CheckCircle2 className="h-8 w-8" />
             </div>
-            <span className="rounded-full bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
-              Pending Verification
-            </span>
-            <h2 className="mt-5 font-display text-3xl font-bold">Thank you, {details?.full_name}!</h2>
+            <h2 className="font-display text-3xl font-bold">Thank you, {details?.full_name}!</h2>
             <p className="mt-3 text-muted-foreground">
-              We've received your payment details. Our team will verify your payment and contact you on WhatsApp once it's confirmed.
+              Your details have been received. Join our WhatsApp community for webinar updates and joining instructions.
             </p>
+            <Link
+              to="/community"
+              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-8 py-4 text-lg font-bold text-whatsapp-foreground shadow-lg shadow-whatsapp/30 transition hover:-translate-y-0.5 sm:w-auto"
+            >
+              Join Our WhatsApp Community <ArrowRight className="h-5 w-5" />
+            </Link>
           </section>
         ) : (
           <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
