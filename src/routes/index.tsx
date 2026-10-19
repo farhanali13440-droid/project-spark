@@ -66,12 +66,15 @@ function Index() {
     {/* 1. Hero */}
     <section className="border-b border-border">
       <div className="mx-auto max-w-6xl px-5 py-12 sm:py-16">
-        <p className="flex items-center gap-2 text-sm font-bold text-primary"><MonitorPlay className="h-4 w-4" />Live Online Health Webinar · With Dr Adeel</p>
-        <h1 className="mt-5 max-w-4xl font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">Root-Cause Health Webinar</h1>
-        <p className="mt-5 max-w-2xl text-lg text-muted-foreground">Find the answers your health deserves. Explore how health history and appropriate testing can help you ask better questions about persistent symptoms.</p>
-        <div className="mt-7 flex max-w-3xl flex-wrap gap-x-5 gap-y-3">{topics.map(({ title }) => <span key={title} className="flex items-center gap-2 text-sm font-semibold"><CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />{title}</span>)}</div>
-        <div className="mt-8 flex flex-wrap items-center gap-6"><div><p className="font-display text-3xl font-bold text-primary">{PAYMENT_AMOUNT}</p><p className="text-xs text-muted-foreground">One-time registration fee</p></div><Cta>Register Now <span className="sr-only">for the webinar</span></Cta></div>
-        <p className="mt-5 text-sm text-muted-foreground">Live webinar · Live Q&A · Community access</p>
+        <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-primary"><MonitorPlay className="h-4 w-4" />EXCLUSIVE HEALTH EDUCATION WEBINAR</p>
+        <h1 className="mt-5 max-w-4xl font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">How to Take Control of Your Health Without Relying on Endless Medications</h1>
+        <p className="mt-5 max-w-2xl text-lg text-muted-foreground">Understand complex health concerns, explore important health topics, and learn how to make more informed decisions about your health.</p>
+        <p className="mt-7 font-bold">IN THIS WEBINAR, WE'LL EXPLORE:</p>
+        <div className="mt-4 flex max-w-3xl flex-wrap gap-x-5 gap-y-3">
+          {["Cancer & Digestive Disorders", "PCOS & Autism", "Food Allergy & Heavy Metal Testing", "When Doctors Haven't Found the Answers"].map(item => <span key={item} className="flex items-center gap-2 text-sm font-semibold"><CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />{item}</span>)}
+        </div>
+        <div className="mt-8 flex flex-wrap items-center gap-6"><div><p className="font-display text-3xl font-bold text-primary">WEBINAR ACCESS: {PAYMENT_AMOUNT}</p></div><Cta>Register Now — {PAYMENT_AMOUNT}</Cta></div>
+        <p className="mt-5 text-sm text-muted-foreground">Click below to continue to checkout and secure your spot.</p>
       </div>
     </section>
 
