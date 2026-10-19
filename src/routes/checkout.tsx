@@ -1,3 +1,4 @@
+import logoAsset from "@/assets/academy-logo.jpg.asset.json";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
 import { z } from "zod";
@@ -10,7 +11,6 @@ import {
   Lock,
   ShieldCheck,
   Smartphone,
-  Stethoscope,
   Upload,
   Video,
   Wallet,
@@ -145,7 +145,7 @@ function CheckoutPage() {
       <header className="border-b border-border bg-card">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
           <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold">
-            <Stethoscope className="h-6 w-6 text-primary" /> Root-Cause Health
+            <img src={logoAsset.url} alt="The Academy of Champions" className="h-10 w-auto mix-blend-multiply sm:h-12" />
           </Link>
           <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
             <Lock className="h-4 w-4" /> Secure registration
@@ -163,7 +163,7 @@ function CheckoutPage() {
             </div>
           </div>
           <div className="flex items-center gap-2 font-display font-bold">
-            <Stethoscope className="h-8 w-8 text-primary" /> Root-Cause Health
+            <img src={logoAsset.url} alt="The Academy of Champions" className="h-16 w-auto mix-blend-multiply" />
           </div>
         </section>
 
