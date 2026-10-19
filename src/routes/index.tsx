@@ -142,7 +142,23 @@ function Index() {
     </div></section>
 
     {/* 8. Final CTA */}
-    <section className="bg-primary py-16 text-primary-foreground sm:py-20"><div className="mx-auto max-w-3xl px-5 text-center"><h2 className="font-display text-3xl font-bold sm:text-4xl">Stop guessing. Start understanding.</h2><p className="mt-5 opacity-90">Join Dr Adeel for an informed conversation about your health.</p><p className="mt-6 font-display text-4xl font-bold">{PAYMENT_AMOUNT}</p><Cta className="mt-6 bg-accent text-accent-foreground hover:bg-accent/90">Join the Webinar Now</Cta></div></section>
+    <section className="bg-primary py-16 text-primary-foreground sm:py-20"><div className="mx-auto max-w-3xl px-5 text-center">
+      <p className="text-sm font-bold uppercase tracking-wide">YOUR HEALTH JOURNEY STARTS HERE</p>
+      <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl">Stop Guessing. Start Understanding Your Health.</h2>
+      <p className="mt-5 opacity-90">Your health deserves attention, knowledge, and informed decisions.</p>
+      <p className="mt-3 opacity-90">Join this educational webinar to explore 7 important health topics, understand key health considerations, and learn how to have more informed conversations with healthcare professionals.</p>
+      <div className="mx-auto mt-7 max-w-xl rounded-lg bg-primary-foreground/10 p-5 text-left">
+        <p className="text-center text-sm font-bold uppercase tracking-wide">WHAT YOU'LL EXPLORE</p>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">{["Cancer & Digestive Disorders","Unresolved Health Concerns","Autism & PCOS","Food Allergy & Heavy Metal Testing"].map(item => <li key={item} className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" /><span>{item}</span></li>)}</ul>
+      </div>
+      <p className="mt-8 text-sm font-bold uppercase tracking-wide">YOUR WEBINAR ACCESS</p>
+      <div className="mt-3 flex items-center justify-center gap-3"><span className="text-xl opacity-75 line-through">PKR 999</span><span className="font-display text-4xl font-bold">PKR 499</span></div>
+      <p className="mt-4 opacity-90">Get access to the educational webinar and join the WhatsApp community for important announcements and joining instructions.</p>
+      <Cta className="mt-6 bg-accent text-accent-foreground hover:bg-accent/90">Register Now — PKR 499</Cta>
+      <p className="mt-4 text-sm opacity-90">Click below to continue to checkout and complete your registration.</p>
+      <p className="mt-5 text-sm font-semibold">Take the first step toward becoming a more informed health advocate.</p>
+      <p className="mt-6 text-xs opacity-80">Disclaimer: This webinar is for educational purposes only and does not replace professional medical advice, diagnosis, or treatment.</p>
+    </div></section>
     <footer className="border-t border-border py-10"><div className="mx-auto max-w-4xl space-y-5 px-5 text-center text-sm text-muted-foreground"><div className="flex justify-center"><Brand /></div><p></p><p>© {new Date().getFullYear()} Root-Cause Health. All rights reserved.</p></div></footer>
   </main>;
 }
