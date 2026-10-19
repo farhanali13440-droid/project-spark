@@ -95,6 +95,6 @@ function Index() {
 
     {/* 8. Final CTA */}
     <section className="bg-primary py-16 text-primary-foreground sm:py-20"><div className="mx-auto max-w-3xl px-5 text-center"><h2 className="font-display text-3xl font-bold sm:text-4xl">Stop guessing. Start understanding.</h2><p className="mt-5 opacity-90">Join Dr Adeel for an informed conversation about your health.</p><p className="mt-6 font-display text-4xl font-bold">{PAYMENT_AMOUNT}</p><Cta className="mt-6 bg-accent text-accent-foreground hover:bg-accent/90">Join the Webinar Now</Cta></div></section>
-    <footer className="border-t border-border py-10"><div className="mx-auto max-w-4xl space-y-5 px-5 text-center text-sm text-muted-foreground"><div className="flex justify-center"><Brand /></div><p>This webinar is for educational and awareness purposes only and does not replace professional medical diagnosis, treatment or advice. Do not change or stop prescribed medication without consulting your healthcare professional.</p><p>© {new Date().getFullYear()} Root-Cause Health. All rights reserved.</p></div></footer>
+    <footer className="border-t border-border py-10"><div className="mx-auto max-w-4xl space-y-5 px-5 text-center text-sm text-muted-foreground"><div className="flex justify-center"><Brand /></div><p></p><p>© {new Date().getFullYear()} Root-Cause Health. All rights reserved.</p></div></footer>
   </main>;
 }
