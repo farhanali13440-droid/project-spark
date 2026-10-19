@@ -90,8 +90,22 @@ function Index() {
       <div className="mt-10 text-center"><h3 className="font-display text-2xl font-bold">Start Your Health Education Journey Today</h3><p className="mt-3 text-muted-foreground">Join the webinar for <strong className="text-foreground">{PAYMENT_AMOUNT}</strong>.</p><Cta className="mt-5">Register Now — {PAYMENT_AMOUNT}</Cta></div>
     </div></section>
 
-    {/* 5. Speaker */}
-    <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="Your webinar speaker" title="Meet the Speaker" /><div className="mx-auto mt-10 grid max-w-4xl gap-8 sm:grid-cols-[240px_1fr] sm:items-center"><div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card text-muted-foreground"><UserRound className="h-20 w-20 stroke-1" /><p className="text-sm">Dr Adeel’s photo coming soon</p></div><div><h3 className="font-display text-3xl font-bold">Dr Adeel</h3><p className="mt-2 font-semibold text-primary">Root-Cause Health Webinar Speaker</p><dl className="mt-6 divide-y divide-border">{["Qualifications", "Specialty", "Experience"].map(label => <div key={label} className="grid grid-cols-[110px_1fr] gap-4 py-3 text-sm"><dt className="font-semibold">{label}</dt><dd className="text-muted-foreground">Awaiting confirmation</dd></div>)}</dl></div></div></div></section>
+    {/* 5. Meet your webinar host */}
+    <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5">
+      <SectionHead label="MEET YOUR WEBINAR HOST" title="Learn From a Healthcare Professional" text="Get a fresh perspective on important health topics and develop a better understanding of the questions surrounding your health." />
+      <div className="mx-auto mt-10 grid max-w-4xl gap-8 sm:grid-cols-[240px_1fr] sm:items-center">
+        <div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card text-muted-foreground"><UserRound className="h-20 w-20 stroke-1" /><p className="text-sm">Host photo coming soon</p></div>
+        <div>
+          <h3 className="font-display text-3xl font-bold">[Doctor's Full Name]</h3>
+          <p className="mt-2 font-semibold text-primary">[Medical Qualifications &amp; Specialty]</p>
+          <p className="mt-5 leading-relaxed text-muted-foreground">Join this educational session to explore important health topics, understand key health considerations, and learn how to have more informed conversations with healthcare professionals.</p>
+          <h4 className="mt-6 font-bold">What You Can Expect:</h4>
+          <ul className="mt-3 space-y-3">{["Clear explanations of important health topics.", "Educational insights into health concerns and testing.", "Guidance on asking informed questions about your health."].map(item => <li key={item} className="flex items-start gap-3 text-sm"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><span>{item}</span></li>)}</ul>
+          <p className="mt-6 font-semibold">Your health journey begins with knowledge.</p>
+          <Cta className="mt-6">Join the Webinar — {PAYMENT_AMOUNT}</Cta>
+        </div>
+      </div>
+    </div></section>
 
     {/* 6. Offer */}
     <section className="py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="Your seat, your next step" title="Webinar Registration Offer" /><div className="mx-auto mt-10 grid max-w-4xl gap-8 border-y border-border py-8 sm:grid-cols-2 sm:items-center"><ul className="space-y-4">{included.map(item => <li key={item} className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-primary" /><span className="font-medium">{item}</span></li>)}</ul><div className="sm:border-l sm:border-border sm:pl-10"><p className="text-sm text-muted-foreground">One-time registration fee</p><p className="mt-2 font-display text-5xl font-bold text-primary">{PAYMENT_AMOUNT}</p><Cta className="mt-6 w-full">Reserve My Seat</Cta><p className="mt-3 text-center text-xs text-muted-foreground">JazzCash · Easypaisa · Bank transfer</p></div></div></div></section>
