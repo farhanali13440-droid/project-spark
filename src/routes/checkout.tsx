@@ -11,7 +11,6 @@ import {
   Lock,
   ShieldCheck,
   Smartphone,
-  Stethoscope,
   Upload,
   Video,
   Wallet,
