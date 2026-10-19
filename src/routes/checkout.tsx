@@ -48,7 +48,7 @@ const paySchema = z.object({
   transaction_id: z.string().trim().min(3, "Enter the transaction ID").max(100),
 });
 
-type Errors = Record<string, string | undefined>;
+type Errors = Partial<Record<"full_name" | "whatsapp" | "email" | "city" | "method" | "transaction_id" | "screenshot" | "form", string>>;
 
 const input =
   "w-full rounded-full border border-input bg-background px-5 py-3 text-base outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/20";
@@ -90,7 +90,7 @@ function CheckoutPage() {
     const res = detailsSchema.safeParse(Object.fromEntries(new FormData(e.currentTarget)));
     if (!res.success) {
       const errs: Errors = {};
-      for (const i of res.error.issues) errs[String(i.path[0])] ??= i.message;
+      for (const i of res.error.issues) errs[i.path[0] as keyof Errors] ??= i.message;
       setErrors(errs);
       return;
     }
@@ -107,7 +107,7 @@ function CheckoutPage() {
     const file = fd.get("screenshot") as File | null;
     const res = paySchema.safeParse(Object.fromEntries(fd));
     const errs: Errors = {};
-    if (!res.success) for (const i of res.error.issues) errs[String(i.path[0])] ??= i.message;
+    if (!res.success) for (const i of res.error.issues) errs[i.path[0] as keyof Errors] ??= i.message;
     if (!file || file.size === 0) errs.screenshot = "Please upload your payment screenshot";
     else if (!file.type.startsWith("image/")) errs.screenshot = "Screenshot must be an image";
     else if (file.size > 5 * 1024 * 1024) errs.screenshot = "Image must be under 5 MB";
