@@ -126,8 +126,20 @@ function Index() {
       </div>
     </div></section>
 
-    {/* 7. FAQs */}
-    <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-3xl px-5"><SectionHead label="Before you register" title="Frequently Asked Questions" /><div className="mt-10 divide-y divide-border">{faqs.map(({ q, a }) => <details key={q} className="group py-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">{q}<ChevronDown className="h-5 w-5 shrink-0 text-primary transition-transform group-open:rotate-180 motion-reduce:transition-none" /></summary><p className="mt-3 leading-relaxed text-muted-foreground">{a}</p></details>)}</div></div></section>
+    {/* 7. Frequently asked questions */}
+    <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-3xl px-5">
+      <SectionHead label="GOT QUESTIONS? WE HAVE ANSWERS." title="Frequently Asked Questions" />
+      <div className="mt-10 divide-y divide-border">{[
+        {q:"What is the webinar registration fee?",a:<>The registration fee is just <strong className="text-foreground">PKR 499</strong>.</>},
+        {q:"Which health topics will the webinar cover?",a:"The webinar will cover cancer, digestive disorders, unresolved health concerns, autism, PCOS, food allergy testing, and heavy metal testing."},
+        {q:"How can I pay the registration fee?",a:<>You can pay through <strong className="text-foreground">JazzCash, Easypaisa, or bank transfer</strong>. Payment instructions will be provided on the checkout page.</>},
+        {q:"How do I join the webinar community?",a:"After submitting your payment details and screenshot, you'll be directed to the WhatsApp community joining page."},
+        {q:"Will I receive webinar updates?",a:"Yes. The WhatsApp community will be used to share important announcements and webinar joining instructions."},
+        {q:"Is this webinar a substitute for medical consultation?",a:"No. This is an educational webinar. It does not replace professional medical advice, diagnosis, or treatment."},
+        {q:"How do I register?",a:<>Click the <strong className="text-foreground">"Register Now — PKR 499"</strong> button on this page. You'll be redirected to the checkout page to complete your registration.</>},
+      ].map(({q,a}, i) => <details key={q} className="group py-5"><summary className="flex cursor-pointer list-none items-start gap-4 font-bold"><span className="text-primary">{i + 1}.</span><span className="flex-1">{q}</span><ChevronDown className="mt-0.5 h-5 w-5 shrink-0 text-primary transition-transform group-open:rotate-180 motion-reduce:transition-none" /></summary><div className="mt-3 pl-8 leading-relaxed text-muted-foreground">{a}</div></details>)}</div>
+      <div className="mt-10 rounded-lg border border-border bg-card p-7 text-center sm:p-9"><h3 className="font-display text-2xl font-bold">Still Have Questions?</h3><p className="mt-3 text-muted-foreground">Take the first step toward expanding your health knowledge.</p><Cta className="mt-6">Register Now — PKR 499</Cta></div>
+    </div></section>
 
     {/* 8. Final CTA */}
     <section className="bg-primary py-16 text-primary-foreground sm:py-20"><div className="mx-auto max-w-3xl px-5 text-center"><h2 className="font-display text-3xl font-bold sm:text-4xl">Stop guessing. Start understanding.</h2><p className="mt-5 opacity-90">Join Dr Adeel for an informed conversation about your health.</p><p className="mt-6 font-display text-4xl font-bold">{PAYMENT_AMOUNT}</p><Cta className="mt-6 bg-accent text-accent-foreground hover:bg-accent/90">Join the Webinar Now</Cta></div></section>
