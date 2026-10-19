@@ -32,12 +32,11 @@ const benefits = [
   { icon: Sparkles, title: "Become a More Informed Health Advocate", text: "Learn to ask better questions, seek reliable health information, and have more informed conversations with healthcare professionals." },
 ];
 const audience = [
-  "People with recurring digestive problems",
-  "Women dealing with PCOS or hormonal concerns",
-  "Parents of children with autism",
-  "Anyone exploring food allergy or heavy metal testing",
-  "Families affected by cancer who want to learn more",
-  "Anyone with unexplained symptoms despite routine reports",
+  { title: "You're Seeking Answers", text: "You have ongoing health concerns and want to understand what questions to discuss with a healthcare professional." },
+  { title: "You Want to Understand Complex Health Topics", text: "You're interested in learning more about cancer, digestive disorders, PCOS, autism, and other health conditions." },
+  { title: "You're Interested in Health Testing", text: "You want to learn about food allergy testing and heavy metal testing, including their role and limitations." },
+  { title: "You Want to Make Informed Health Decisions", text: "You want to become more confident in evaluating health information and discussing your concerns with qualified healthcare professionals." },
+  { title: "You Believe in Learning Before Making Decisions", text: "You want to improve your health knowledge and understand the importance of appropriate medical guidance." },
 ];
 const included = ["Live online webinar access", "All seven webinar topics", "Live Q&A session", "Testing guidance", "WhatsApp community access"];
 const faqs = [
@@ -83,8 +82,13 @@ function Index() {
     {/* 3. What you'll discover */}
     <section id="learn" className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="WHAT YOU'LL DISCOVER" title="Explore the Health Topics That Matter" text="Gain a better understanding of important health topics, explore common concerns, and learn what questions to discuss with qualified healthcare professionals." /><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{topics.map(({ icon: Icon, title, text }, i) => <div key={title} className="rounded-lg border border-border bg-card p-6"><div className="flex items-center justify-between"><span className="font-display text-2xl font-bold text-primary">{String(i + 1).padStart(2, "0")}</span><Icon className="h-6 w-6 text-primary" /></div><h3 className="mt-4 font-display text-xl font-bold">{title}</h3><p className="mt-3 text-sm text-muted-foreground">{text}</p></div>)}</div><div className="mt-8 flex justify-center"><Cta>Explore These Topics — Register for {PAYMENT_AMOUNT}</Cta></div></div></section>
 
-    {/* 4. Audience */}
-    <section className="py-16 sm:py-20"><div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-2 lg:items-center"><div><p className="text-sm font-bold text-primary">Is this for you?</p><h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">Who Should Attend?</h2><p className="mt-5 max-w-md text-muted-foreground">For individuals and families who want to understand health concerns and have more informed conversations with their healthcare professionals.</p></div><ul className="divide-y divide-border">{audience.map(item => <li key={item} className="flex items-start gap-3 py-4"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><span className="font-medium">{item}</span></li>)}</ul></div></section>
+    {/* 4. Is this webinar for you? */}
+    <section className="py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5">
+      <SectionHead label="IS THIS WEBINAR FOR YOU?" title="Take a More Informed Approach to Your Health" text="This webinar is designed for people who want to better understand important health topics and explore reliable ways to learn more about their health concerns." />
+      <h3 className="mt-10 text-center text-xl font-bold">This Webinar May Be Right for You If:</h3>
+      <div className="mx-auto mt-6 grid max-w-4xl gap-4 sm:grid-cols-2">{audience.map(({ title, text }, i) => <div key={title} className="rounded-lg border border-border bg-card p-6"><div className="flex items-start gap-4"><span className="font-display text-2xl font-bold text-primary">{String(i + 1).padStart(2, "0")}</span><div><h4 className="font-bold">{title}</h4><p className="mt-2 text-sm text-muted-foreground">{text}</p></div></div></div>)}</div>
+      <div className="mt-10 text-center"><h3 className="font-display text-2xl font-bold">Start Your Health Education Journey Today</h3><p className="mt-3 text-muted-foreground">Join the webinar for <strong className="text-foreground">{PAYMENT_AMOUNT}</strong>.</p><Cta className="mt-5">Register Now — {PAYMENT_AMOUNT}</Cta></div>
+    </div></section>
 
     {/* 5. Speaker */}
     <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="Your webinar speaker" title="Meet the Speaker" /><div className="mx-auto mt-10 grid max-w-4xl gap-8 sm:grid-cols-[240px_1fr] sm:items-center"><div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card text-muted-foreground"><UserRound className="h-20 w-20 stroke-1" /><p className="text-sm">Dr Adeel’s photo coming soon</p></div><div><h3 className="font-display text-3xl font-bold">Dr Adeel</h3><p className="mt-2 font-semibold text-primary">Root-Cause Health Webinar Speaker</p><dl className="mt-6 divide-y divide-border">{["Qualifications", "Specialty", "Experience"].map(label => <div key={label} className="grid grid-cols-[110px_1fr] gap-4 py-3 text-sm"><dt className="font-semibold">{label}</dt><dd className="text-muted-foreground">Awaiting confirmation</dd></div>)}</dl></div></div></div></section>
