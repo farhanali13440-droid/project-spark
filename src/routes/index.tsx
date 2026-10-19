@@ -15,7 +15,7 @@ import {
   HelpCircle,
   MessageCircleQuestion,
   MonitorPlay,
-  Pill,
+  Pill as PillIcon,
   RefreshCcw,
   ShieldCheck,
   Sparkles,
@@ -67,7 +67,7 @@ const CONTENT = {
   pains: [
     { icon: FileQuestion, title: "Reports say 'normal'", text: "Your tests come back fine, yet you still don't feel well." },
     { icon: RefreshCcw, title: "Symptoms keep returning", text: "Bloating, fatigue or skin issues come back no matter what you try." },
-    { icon: Pill, title: "Only managing symptoms", text: "Medicines help for a while, but nobody explains the underlying cause." },
+    { icon: PillIcon, title: "Only managing symptoms", text: "Medicines help for a while, but nobody explains the underlying cause." },
     { icon: HelpCircle, title: "Conflicting advice", text: "Everyone tells you something different and none of it feels reliable." },
     { icon: ClipboardList, title: "Not sure which test to do", text: "There are so many tests — you don't know which ones actually matter." },
     { icon: Baby, title: "Worried about your child", text: "You want to understand what may be affecting your child's health and behaviour." },
