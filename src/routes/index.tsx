@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import logoAsset from "@/assets/academy-logo.jpg.asset.json";
 import {
   Activity,
   ArrowRight,
@@ -163,14 +164,13 @@ function CtaButton({ children, className = "" }: { children: ReactNode; classNam
   );
 }
 
-function Brand() {
+function Brand({ className = "h-10 sm:h-12" }: { className?: string }) {
   return (
-    <div className="flex min-w-0 items-center gap-2.5">
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
-        <Stethoscope className="h-5 w-5" />
-      </span>
-      <span className="truncate font-display text-lg font-bold">{CONTENT.brand}</span>
-    </div>
+    <img
+      src={logoAsset.url}
+      alt="The Academy of Champions logo"
+      className={`w-auto shrink-0 object-contain mix-blend-multiply ${className}`}
+    />
   );
 }
 
@@ -409,7 +409,7 @@ function Index() {
 
       <footer className="border-t border-border py-10">
         <div className="mx-auto max-w-6xl space-y-4 px-5 text-center text-sm text-muted-foreground">
-          <div className="flex justify-center"><Brand /></div>
+          <div className="flex justify-center"><Brand className="h-16" /></div>
           <p className="mx-auto max-w-3xl">
             This webinar is for educational and awareness purposes only and does not replace professional medical
             diagnosis, treatment or advice. Do not change or stop prescribed medication without consulting your
