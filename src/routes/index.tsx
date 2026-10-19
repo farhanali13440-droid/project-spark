@@ -1,20 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { z } from "zod";
 import {
   Activity,
+  ArrowRight,
   Baby,
   CheckCircle2,
+  ChevronDown,
+  ClipboardList,
+  FileQuestion,
   FlaskConical,
+  Globe,
   HeartPulse,
   HelpCircle,
+  MessageCircleQuestion,
+  MonitorPlay,
+  Pill,
+  RefreshCcw,
   ShieldCheck,
   Sparkles,
   Stethoscope,
-  Wheat,
   Users,
   Video,
-  Clock,
+  Wallet,
+  Wheat,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -40,11 +49,29 @@ export const Route = createFileRoute("/")({
 
 /* ---------- Editable content ---------- */
 const CONTENT = {
+  brand: "Root-Cause Health",
   fee: "PKR 499",
-  eyebrow: "Live Online Webinar",
-  headline: "Find the answers your health deserves",
+  eyebrow: "Live Online Health Webinar",
+  headlineTop: "Find the answers",
+  headlineBottom: "your health deserves",
   subheadline:
     "Discover how root-cause testing uncovers what routine check-ups miss — from chronic gut issues to PCOS, autism and beyond.",
+  details: [
+    { icon: MonitorPlay, label: "Format", value: "Live Webinar" },
+    { icon: Globe, label: "Platform", value: "Online" },
+    { icon: MessageCircleQuestion, label: "Includes", value: "Live Q&A session" },
+    { icon: Users, label: "After registration", value: "Community access" },
+    { icon: Stethoscope, label: "Hosted by", value: "Root-Cause Health" },
+    { icon: Wallet, label: "Registration fee", value: "PKR 499" },
+  ],
+  pains: [
+    { icon: FileQuestion, title: "Reports say 'normal'", text: "Your tests come back fine, yet you still don't feel well." },
+    { icon: RefreshCcw, title: "Symptoms keep returning", text: "Bloating, fatigue or skin issues come back no matter what you try." },
+    { icon: Pill, title: "Only managing symptoms", text: "Medicines help for a while, but nobody explains the underlying cause." },
+    { icon: HelpCircle, title: "Conflicting advice", text: "Everyone tells you something different and none of it feels reliable." },
+    { icon: ClipboardList, title: "Not sure which test to do", text: "There are so many tests — you don't know which ones actually matter." },
+    { icon: Baby, title: "Worried about your child", text: "You want to understand what may be affecting your child's health and behaviour." },
+  ],
   topics: [
     { icon: HeartPulse, title: "Cancer", text: "Understanding risk factors and supportive testing approaches." },
     { icon: Activity, title: "Digestive Disorders", text: "Bloating, IBS, acidity — finding the underlying triggers." },
@@ -54,11 +81,26 @@ const CONTENT = {
     { icon: FlaskConical, title: "Heavy Metal Testing", text: "Detecting toxic exposure and what to do next." },
     { icon: HelpCircle, title: "When Doctors Have No Answers", text: "Next steps when reports are 'normal' but you still feel unwell." },
   ],
+  audience: [
+    "People with long-standing digestive problems",
+    "Women dealing with PCOS or hormonal issues",
+    "Parents of children with autism",
+    "Anyone curious about food allergy or heavy metal testing",
+    "Families affected by cancer who want to understand more",
+    "Anyone whose reports are 'normal' but who still feels unwell",
+  ],
   benefits: [
-    "Full access to the live webinar session",
-    "Live Q&A — ask your own health questions",
-    "Practical guidance on which tests to consider",
-    "Join a supportive community after registration",
+    { icon: Video, title: "Live webinar", text: "Full access to the live webinar session." },
+    { icon: MessageCircleQuestion, title: "Live Q&A", text: "Ask your own health questions directly." },
+    { icon: FlaskConical, title: "Testing guidance", text: "Practical guidance on which tests to consider." },
+    { icon: Users, title: "Community", text: "Join a supportive community after registration." },
+  ],
+  faqs: [
+    { q: "What is this webinar about?", a: "It explains how root-cause testing can help with Cancer, Digestive Disorders, Autism, PCOS, Food Allergies and Heavy Metal exposure." },
+    { q: "How much does registration cost?", a: "Registration is a one-time fee of PKR 499." },
+    { q: "How do I register?", a: "Fill in your name, WhatsApp number and email in the form, then complete the payment on the next page." },
+    { q: "Can I ask my own questions?", a: "Yes. There is a live Q&A where you can ask about your own health concerns." },
+    { q: "Will this replace my doctor's treatment?", a: "No. The webinar is educational only and does not replace professional medical advice. Don't change any medication without speaking to your doctor." },
   ],
 };
 
@@ -73,7 +115,7 @@ const schema = z.object({
 
 type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
 
-function RegistrationForm({ id }: { id?: string }) {
+function RegistrationForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [loading, setLoading] = useState(false);
 
@@ -96,86 +138,205 @@ function RegistrationForm({ id }: { id?: string }) {
     window.location.assign("/payment");
   }
 
-  const field = "w-full rounded-xl border border-input bg-background px-4 py-3 text-base outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/20";
+  const field =
+    "w-full rounded-xl border border-input bg-background px-4 py-3 text-base outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/20";
 
   return (
-    <form id={id} onSubmit={onSubmit} noValidate className="space-y-4 rounded-3xl border border-border bg-card p-6 shadow-xl shadow-primary/5 sm:p-8">
-      <div className="flex items-end justify-between">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Reserve your seat</p>
-          <p className="font-display text-4xl font-bold text-foreground">{CONTENT.fee}</p>
-        </div>
-        <span className="rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold text-accent-foreground">Limited seats</span>
+    <form onSubmit={onSubmit} noValidate className="overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
+      <div className="bg-gradient-brand px-6 py-5 text-center text-primary-foreground sm:px-8">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] opacity-90">Reserve your seat</p>
+        <p className="mt-1 font-display text-4xl font-bold">{CONTENT.fee}</p>
+        <p className="text-sm opacity-85">One-time registration fee</p>
       </div>
-      {([
-        ["name", "Full Name", "text", "e.g. Ayesha Khan"],
-        ["whatsapp", "WhatsApp Number", "tel", "+92 300 1234567"],
-        ["email", "Email Address", "email", "you@example.com"],
-      ] as const).map(([name, label, type, ph]) => (
-        <label key={name} className="block">
-          <span className="mb-1.5 block text-sm font-medium text-foreground">{label}</span>
-          <input name={name} type={type} placeholder={ph} className={field} aria-invalid={!!errors[name]} />
-          {errors[name] && <span className="mt-1 block text-sm text-destructive">{errors[name]}</span>}
-        </label>
-      ))}
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full rounded-xl bg-primary px-6 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition hover:bg-primary/90 disabled:opacity-70"
-      >
-        {loading ? "Saving…" : `Register Now for ${CONTENT.fee}`}
-      </button>
-      <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-        <ShieldCheck className="h-4 w-4" /> Your details are kept private.
-      </p>
+      <div className="space-y-4 p-6 sm:p-8">
+        {([
+          ["name", "Full Name", "text", "e.g. Ayesha Khan"],
+          ["whatsapp", "WhatsApp Number", "tel", "+92 300 1234567"],
+          ["email", "Email Address", "email", "you@example.com"],
+        ] as const).map(([name, label, type, ph]) => (
+          <label key={name} className="block">
+            <span className="mb-1.5 block text-sm font-medium text-foreground">{label}</span>
+            <input name={name} type={type} placeholder={ph} className={field} aria-invalid={!!errors[name]} />
+            {errors[name] && <span className="mt-1 block text-sm text-destructive">{errors[name]}</span>}
+          </label>
+        ))}
+        <button
+          type="submit"
+          disabled={loading}
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-4 text-base font-bold text-primary-foreground shadow-soft transition hover:opacity-95 disabled:opacity-70"
+        >
+          {loading ? "Saving…" : `Register Now — ${CONTENT.fee}`}
+          {!loading && <ArrowRight className="h-4 w-4" />}
+        </button>
+        <p className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+          <ShieldCheck className="h-4 w-4" /> Your details are kept private.
+        </p>
+      </div>
     </form>
+  );
+}
+
+function Pill({ children }: { children: ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+      {children}
+    </span>
+  );
+}
+
+function SectionHead({ pill, title, text }: { pill: string; title: string; text?: string }) {
+  return (
+    <div className="mx-auto max-w-3xl text-center">
+      <Pill>{pill}</Pill>
+      <h2 className="mt-5 font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">{title}</h2>
+      {text && <p className="mt-4 text-lg text-muted-foreground">{text}</p>}
+    </div>
+  );
+}
+
+function CtaButton({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return (
+    <a
+      href="#register"
+      className={`inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-7 py-4 text-base font-bold text-primary-foreground shadow-soft transition hover:opacity-95 ${className}`}
+    >
+      {children} <ArrowRight className="h-4 w-4 shrink-0" />
+    </a>
+  );
+}
+
+function Brand() {
+  return (
+    <div className="flex min-w-0 items-center gap-2.5">
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
+        <Stethoscope className="h-5 w-5" />
+      </span>
+      <span className="truncate font-display text-lg font-bold">{CONTENT.brand}</span>
+    </div>
   );
 }
 
 function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <header className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
-        <div className="flex items-center gap-2 font-display text-lg font-bold">
-          <Stethoscope className="h-6 w-6 text-primary" /> Root-Cause Health
+      {/* Sticky header */}
+      <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
+        <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3.5">
+          <Brand />
+          <a
+            href="#register"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-soft"
+          >
+            Join for {CONTENT.fee} <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
-        <a href="#register" className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
-          Register
-        </a>
       </header>
 
-      <section className="mx-auto grid max-w-6xl gap-10 px-5 pb-16 pt-6 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:pt-12">
-        <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-secondary-foreground">
-            <Video className="h-3.5 w-3.5" /> {CONTENT.eyebrow}
-          </span>
-          <h1 className="mt-5 font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-            {CONTENT.headline}
-          </h1>
-          <p className="mt-5 max-w-xl text-lg text-muted-foreground">{CONTENT.subheadline}</p>
-          <div className="mt-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> Live session + Q&A</span>
-            <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Community access</span>
+      {/* Hero */}
+      <section className="bg-gradient-to-b from-secondary/70 to-background">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 pb-20 pt-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:pt-20">
+          <div>
+            <Pill>
+              <Video className="h-3.5 w-3.5" /> {CONTENT.eyebrow}
+            </Pill>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
+              {CONTENT.headlineTop}
+              <span className="block text-gradient-brand">{CONTENT.headlineBottom}</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-muted-foreground">{CONTENT.subheadline}</p>
+            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
+              <span className="flex items-center gap-2"><MonitorPlay className="h-4 w-4 text-primary" /> Live online session</span>
+              <span className="flex items-center gap-2"><MessageCircleQuestion className="h-4 w-4 text-primary" /> Live Q&A</span>
+              <span className="flex items-center gap-2"><Users className="h-4 w-4 text-primary" /> Community access</span>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <CtaButton>Join the Webinar — {CONTENT.fee}</CtaButton>
+              <a
+                href="#learn"
+                className="inline-flex items-center justify-center rounded-full border-2 border-primary px-7 py-3.5 font-bold text-primary transition hover:bg-primary/5"
+              >
+                See what you'll learn
+              </a>
+            </div>
           </div>
-        </div>
-        <div id="register" className="scroll-mt-6">
-          <RegistrationForm />
+          <div id="register" className="scroll-mt-24">
+            <RegistrationForm />
+          </div>
         </div>
       </section>
 
-      <section className="bg-secondary/60 py-16">
-        <div className="mx-auto max-w-6xl px-5">
-          <h2 className="font-display text-3xl font-bold sm:text-4xl">What you'll learn</h2>
-          <p className="mt-3 max-w-2xl text-muted-foreground">
-            Clear, practical insights on the conditions and tests that matter most.
-          </p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {CONTENT.topics.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="rounded-2xl border border-border bg-card p-6">
-                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Icon className="h-5 w-5" />
+      {/* Details card */}
+      <section className="mx-auto max-w-6xl px-5 pb-20">
+        <div className="grid gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-soft sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <Pill>Webinar details</Pill>
+            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">Root-Cause Health Webinar</h2>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {CONTENT.details.map(({ icon: Icon, label, value }) => (
+                <div key={label} className="flex items-start gap-3 rounded-2xl bg-secondary/60 p-4">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-card text-primary">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">{label}</p>
+                    <p className="font-semibold">{value}</p>
+                  </div>
                 </div>
-                <h3 className="font-display text-xl font-bold">{title}</h3>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-3 lg:w-64">
+            <CtaButton>Reserve My Seat</CtaButton>
+            <p className="text-center text-xs text-muted-foreground">Joining details are shared after payment.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Honest question */}
+      <section className="bg-secondary/60 py-20">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionHead
+            pill="The honest question"
+            title="Still searching for answers about your health?"
+            text="Feeling unwell without a clear reason is exhausting. Understanding the root cause is where real change begins."
+          />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {CONTENT.pains.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="flex gap-4 rounded-3xl border border-border bg-card p-6 shadow-soft">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="font-bold">{title}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <CtaButton>Join the Root-Cause Health Webinar</CtaButton>
+          </div>
+        </div>
+      </section>
+
+      {/* Curriculum */}
+      <section id="learn" className="scroll-mt-20 py-20">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionHead
+            pill="The curriculum"
+            title="What you'll learn inside the webinar"
+            text="Seven focused topics with clear, practical insights on the conditions and tests that matter most."
+          />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {CONTENT.topics.map(({ icon: Icon, title, text }, i) => (
+              <div key={title} className="relative rounded-3xl border border-border bg-card p-6 shadow-soft">
+                <div className="flex items-center justify-between">
+                  <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-brand font-bold text-primary-foreground">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Icon className="h-6 w-6 text-primary/60" />
+                </div>
+                <h3 className="mt-5 font-display text-xl font-bold">{title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{text}</p>
               </div>
             ))}
@@ -183,30 +344,121 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-10 px-5 py-16 lg:grid-cols-2 lg:items-center">
-        <div>
-          <h2 className="font-display text-3xl font-bold sm:text-4xl">What's included</h2>
-          <ul className="mt-6 space-y-4">
-            {CONTENT.benefits.map((b) => (
-              <li key={b} className="flex gap-3">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                <span>{b}</span>
+      {/* Who should attend */}
+      <section className="bg-secondary/60 py-20">
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-2 lg:items-center">
+          <div>
+            <Pill>Who it's for</Pill>
+            <h2 className="mt-5 font-display text-3xl font-bold sm:text-4xl lg:text-5xl">Who should attend?</h2>
+            <p className="mt-4 text-muted-foreground">
+              This webinar is educational and is not a substitute for medical treatment.
+            </p>
+          </div>
+          <ul className="grid gap-3">
+            {CONTENT.audience.map((a) => (
+              <li key={a} className="flex items-center gap-3 rounded-2xl border border-border bg-card px-5 py-4">
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" />
+                <span className="font-medium">{a}</span>
               </li>
             ))}
           </ul>
         </div>
-        <div className="rounded-3xl bg-primary p-8 text-primary-foreground sm:p-10">
-          <p className="text-sm font-semibold uppercase tracking-wider opacity-80">One-time registration</p>
-          <p className="mt-2 font-display text-5xl font-bold">{CONTENT.fee}</p>
-          <p className="mt-3 opacity-90">Stop guessing. Get the knowledge to take the right next step for your health.</p>
-          <a href="#register" className="mt-6 inline-block rounded-xl bg-accent px-6 py-4 font-bold text-accent-foreground transition hover:opacity-90">
-            Register Now for {CONTENT.fee}
+      </section>
+
+      {/* What's included */}
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionHead pill="What's included" title="Your webinar registration includes" />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {CONTENT.benefits.map(({ icon: Icon, title, text }) => (
+              <div key={title} className="rounded-3xl border border-border bg-card p-6 shadow-soft">
+                <span className="grid h-11 w-11 place-items-center rounded-full bg-primary/10 text-primary">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 font-bold">{title}</h3>
+                <p className="mt-1.5 text-sm text-muted-foreground">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="bg-secondary/60 py-20">
+        <div className="mx-auto max-w-6xl px-5">
+          <SectionHead pill="Your registration" title="Take the first step towards real answers" />
+          <div className="mx-auto mt-12 max-w-xl overflow-hidden rounded-[2rem] bg-card shadow-soft">
+            <div className="bg-gradient-brand px-6 py-8 text-center text-primary-foreground">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] opacity-90">Root-Cause Health Webinar</p>
+              <p className="mt-2 font-display text-5xl font-bold">{CONTENT.fee}</p>
+              <p className="mt-1 text-sm opacity-85">Registration fee</p>
+            </div>
+            <div className="p-6 sm:p-8">
+              {[
+                ["Live webinar access", "Included"],
+                ["All 7 topics", "Included"],
+                ["Live Q&A + community", "Included"],
+                ["Webinar registration", CONTENT.fee],
+              ].map(([k, v], i, arr) => (
+                <div
+                  key={k}
+                  className={`flex items-center justify-between py-3.5 text-sm ${i < arr.length - 1 ? "border-b border-border" : ""}`}
+                >
+                  <span className="text-muted-foreground">{k}</span>
+                  <span className={`font-bold ${v === CONTENT.fee ? "text-primary" : ""}`}>{v}</span>
+                </div>
+              ))}
+              <CtaButton className="mt-6 w-full">Join the Webinar for {CONTENT.fee}</CtaButton>
+              <p className="mt-4 text-center text-sm text-muted-foreground">Secure your seat today.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20">
+        <div className="mx-auto max-w-3xl px-5">
+          <SectionHead pill="Questions" title="Frequently asked questions" />
+          <div className="mt-10 space-y-3">
+            {CONTENT.faqs.map(({ q, a }) => (
+              <details key={q} className="group rounded-2xl border border-border bg-card px-5 py-4 open:shadow-soft">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">
+                  {q}
+                  <ChevronDown className="h-5 w-5 shrink-0 text-primary transition group-open:rotate-180" />
+                </summary>
+                <p className="mt-3 text-muted-foreground">{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="px-5 pb-20">
+        <div className="mx-auto max-w-6xl rounded-[2rem] bg-gradient-brand px-6 py-14 text-center text-primary-foreground sm:px-12">
+          <h2 className="font-display text-3xl font-bold sm:text-5xl">Stop guessing. Start understanding.</h2>
+          <p className="mx-auto mt-4 max-w-2xl opacity-90">
+            Your health deserves more than guesswork. Get the knowledge to take the right next step.
+          </p>
+          <a
+            href="#register"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-bold text-accent-foreground transition hover:opacity-90"
+          >
+            Register Now for {CONTENT.fee} <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </section>
 
-      <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Root-Cause Health. Educational content only — not a substitute for medical advice.
+      <footer className="border-t border-border py-10">
+        <div className="mx-auto max-w-6xl space-y-4 px-5 text-center text-sm text-muted-foreground">
+          <div className="flex justify-center"><Brand /></div>
+          <p className="mx-auto max-w-3xl">
+            This webinar is for educational and awareness purposes only and does not replace professional medical
+            diagnosis, treatment or advice. Do not change or stop prescribed medication without consulting your
+            healthcare professional.
+          </p>
+          <p>© {new Date().getFullYear()} {CONTENT.brand}. All rights reserved.</p>
+        </div>
       </footer>
     </main>
   );

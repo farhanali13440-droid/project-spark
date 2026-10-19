@@ -165,5 +165,23 @@
   --input: oklch(0.88 0.02 85);
   --ring: oklch(0.42 0.08 175);
 }
+:root {
+  --primary-glow: oklch(0.62 0.1 175);
+  --gradient-primary: linear-gradient(120deg, var(--primary), var(--primary-glow));
+  --shadow-soft: 0 18px 40px -20px color-mix(in oklab, var(--primary) 35%, transparent);
+}
 body { font-family: "Manrope", system-ui, sans-serif; }
 .font-display { font-family: "Fraunces", Georgia, serif; }
+
+@utility bg-gradient-brand {
+  background-image: var(--gradient-primary);
+}
+@utility text-gradient-brand {
+  background-image: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
