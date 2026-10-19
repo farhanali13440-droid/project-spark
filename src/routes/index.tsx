@@ -107,8 +107,24 @@ function Index() {
       </div>
     </div></section>
 
-    {/* 6. Offer */}
-    <section className="py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="Your seat, your next step" title="Webinar Registration Offer" /><div className="mx-auto mt-10 grid max-w-4xl gap-8 border-y border-border py-8 sm:grid-cols-2 sm:items-center"><ul className="space-y-4">{included.map(item => <li key={item} className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-primary" /><span className="font-medium">{item}</span></li>)}</ul><div className="sm:border-l sm:border-border sm:pl-10"><p className="text-sm text-muted-foreground">One-time registration fee</p><p className="mt-2 font-display text-5xl font-bold text-primary">{PAYMENT_AMOUNT}</p><Cta className="mt-6 w-full">Reserve My Seat</Cta><p className="mt-3 text-center text-xs text-muted-foreground">JazzCash · Easypaisa · Bank transfer</p></div></div></div></section>
+    {/* 6. Your opportunity to learn */}
+    <section className="py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5">
+      <SectionHead label="YOUR OPPORTUNITY TO LEARN" title="Invest in Your Health Knowledge for Just PKR 499" text="Get access to an educational webinar covering important health topics, helping you better understand health concerns and make more informed decisions." />
+      <div className="mx-auto mt-10 grid max-w-4xl gap-10 md:grid-cols-[1fr_320px] md:items-center">
+        <div>
+          <h3 className="text-xl font-bold">What You'll Get</h3>
+          <ul className="mt-6 space-y-5">
+            {[{title:"Educational Webinar Access",text:"Explore important health topics in one learning session."},{title:"Insights Into 7 Important Health Topics",text:"Learn about cancer, digestive disorders, unresolved health concerns, autism, PCOS, food allergy testing, and heavy metal testing."},{title:"Practical Health Awareness",text:"Develop a better understanding of health information and questions to discuss with healthcare professionals."},{title:"WhatsApp Community Access",text:"Join the webinar community to receive important announcements and joining instructions."}].map(item => <li key={item.title} className="flex items-start gap-3"><CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-primary" /><div><h4 className="font-bold">{item.title}</h4><p className="mt-1 text-sm text-muted-foreground">{item.text}</p></div></li>)}
+          </ul>
+        </div>
+        <div className="rounded-xl border border-border bg-card p-7 text-center shadow-sm">
+          <p className="text-sm font-bold uppercase tracking-wide text-primary">YOUR REGISTRATION FEE</p>
+          <div className="mt-5 flex items-center justify-center gap-3"><span className="text-xl text-muted-foreground line-through">PKR 999</span><span className="font-display text-4xl font-bold text-primary">PKR 499</span></div>
+          <Cta className="mt-7 w-full">Get Access for PKR 499</Cta>
+          <p className="mt-4 text-xs text-muted-foreground">Click below to continue to checkout and complete your registration.</p>
+        </div>
+      </div>
+    </div></section>
 
     {/* 7. FAQs */}
     <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-3xl px-5"><SectionHead label="Before you register" title="Frequently Asked Questions" /><div className="mt-10 divide-y divide-border">{faqs.map(({ q, a }) => <details key={q} className="group py-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">{q}<ChevronDown className="h-5 w-5 shrink-0 text-primary transition-transform group-open:rotate-180 motion-reduce:transition-none" /></summary><p className="mt-3 leading-relaxed text-muted-foreground">{a}</p></details>)}</div></div></section>
