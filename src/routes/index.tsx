@@ -18,13 +18,13 @@ export const Route = createFileRoute("/")({
 });
 
 const topics = [
-  { icon: HeartPulse, title: "Cancer", text: "An educational overview of risk factors and the role of supportive testing." },
-  { icon: Activity, title: "Digestive Disorders", text: "Explore bloating, IBS and acidity, and questions to discuss with your doctor." },
-  { icon: Baby, title: "Autism", text: "Understand nutritional and environmental factors without replacing specialist care." },
-  { icon: Sparkles, title: "PCOS", text: "Learn about hormonal health, metabolism and when testing may be appropriate." },
-  { icon: Wheat, title: "Food Allergy Testing", text: "Understand testing options and the difference between allergy and sensitivity." },
-  { icon: FlaskConical, title: "Heavy Metal Testing", text: "Learn about exposure, testing considerations and professional follow-up." },
-  { icon: HelpCircle, title: "When Doctors Have No Answers", text: "Prepare informed questions and consider next steps when symptoms remain unexplained." },
+  { icon: HeartPulse, title: "Cancer", text: "Explore important cancer-related health information and understand why informed medical guidance matters." },
+  { icon: Activity, title: "Digestive Disorders", text: "Learn about digestive health concerns and why persistent symptoms deserve proper medical evaluation." },
+  { icon: HelpCircle, title: "When Doctors Haven't Found the Answers", text: "Explore how to approach unresolved health concerns and prepare questions for further medical assessment." },
+  { icon: Baby, title: "Autism", text: "Understand key aspects of autism and developmental health." },
+  { icon: Sparkles, title: "PCOS", text: "Explore polycystic ovary syndrome (PCOS) and its impact on women's health." },
+  { icon: Wheat, title: "Food Allergy Testing", text: "Understand the role of food allergy testing and why choosing appropriate tests matters." },
+  { icon: FlaskConical, title: "Heavy Metal Testing", text: "Explore the basics of heavy metal testing and the importance of interpreting results in the right clinical context." },
 ];
 const benefits = [
   { icon: Stethoscope, title: "Understand Complex Health Topics", text: "Explore cancer, digestive disorders, PCOS, autism, and other important health subjects in one educational session." },
@@ -80,8 +80,8 @@ function Index() {
     {/* 2. Why attend */}
     <section className="py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="WHY THIS WEBINAR MATTERS" title="Your Health Deserves More Than Guesswork" text="When health concerns persist and answers are unclear, knowing what questions to ask and what information to seek can make a difference." /><p className="mx-auto mt-5 max-w-3xl text-center text-muted-foreground">This educational webinar will help you explore important health topics and develop a better understanding of your health-related concerns.</p><div className="mt-10 grid gap-6 md:grid-cols-3">{benefits.map(({ icon: Icon, title, text }) => <div key={title} className="rounded-lg border border-border bg-card p-6"><Icon className="h-7 w-7 text-primary" /><h3 className="mt-5 text-lg font-bold">{title}</h3><p className="mt-3 text-sm text-muted-foreground">{text}</p></div>)}</div><div className="mt-8 text-center"><p className="font-bold">Your health journey starts with knowledge.</p><Cta className="mt-5">Register Now — {PAYMENT_AMOUNT}</Cta></div></div></section>
 
-    {/* 3. Topics */}
-    <section id="learn" className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="Seven focused topics" title="What Will You Learn?" text="A practical overview of health conditions and testing considerations, with room for your questions." /><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{topics.map(({ icon: Icon, title, text }, i) => <div key={title} className="rounded-lg border border-border bg-card p-6"><div className="flex items-center justify-between"><span className="font-display text-2xl font-bold text-primary">{String(i + 1).padStart(2, "0")}</span><Icon className="h-6 w-6 text-primary" /></div><h3 className="mt-4 font-display text-xl font-bold">{title}</h3><p className="mt-3 text-sm text-muted-foreground">{text}</p></div>)}</div></div></section>
+    {/* 3. What you'll discover */}
+    <section id="learn" className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5"><SectionHead label="WHAT YOU'LL DISCOVER" title="Explore the Health Topics That Matter" text="Gain a better understanding of important health topics, explore common concerns, and learn what questions to discuss with qualified healthcare professionals." /><div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{topics.map(({ icon: Icon, title, text }, i) => <div key={title} className="rounded-lg border border-border bg-card p-6"><div className="flex items-center justify-between"><span className="font-display text-2xl font-bold text-primary">{String(i + 1).padStart(2, "0")}</span><Icon className="h-6 w-6 text-primary" /></div><h3 className="mt-4 font-display text-xl font-bold">{title}</h3><p className="mt-3 text-sm text-muted-foreground">{text}</p></div>)}</div><div className="mt-8 flex justify-center"><Cta>Explore These Topics — Register for {PAYMENT_AMOUNT}</Cta></div></div></section>
 
     {/* 4. Audience */}
     <section className="py-16 sm:py-20"><div className="mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-2 lg:items-center"><div><p className="text-sm font-bold text-primary">Is this for you?</p><h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">Who Should Attend?</h2><p className="mt-5 max-w-md text-muted-foreground">For individuals and families who want to understand health concerns and have more informed conversations with their healthcare professionals.</p></div><ul className="divide-y divide-border">{audience.map(item => <li key={item} className="flex items-start gap-3 py-4"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><span className="font-medium">{item}</span></li>)}</ul></div></section>
