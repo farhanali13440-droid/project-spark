@@ -92,13 +92,15 @@ function Index() {
 
     {/* 5. Meet your webinar host */}
     <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5">
-      <SectionHead label="MEET YOUR WEBINAR HOST" title="Learn From a Healthcare Professional" text="Get a fresh perspective on important health topics and develop a better understanding of the questions surrounding your health." />
+      <SectionHead label="MEET YOUR WEBINAR HOST" title="Learn From Dr. Adeel Anwar" text="Get a fresh perspective on important health topics and develop a better understanding of the questions surrounding your health." />
       <div className="mx-auto mt-10 grid max-w-4xl gap-8 sm:grid-cols-[240px_1fr] sm:items-center">
         <div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card text-muted-foreground"><UserRound className="h-20 w-20 stroke-1" /><p className="text-sm">Host photo coming soon</p></div>
         <div>
-          <h3 className="font-display text-3xl font-bold">[Doctor's Full Name]</h3>
-          <p className="mt-2 font-semibold text-primary">[Medical Qualifications &amp; Specialty]</p>
-          <p className="mt-5 leading-relaxed text-muted-foreground">Join this educational session to explore important health topics, understand key health considerations, and learn how to have more informed conversations with healthcare professionals.</p>
+          <h3 className="font-display text-3xl font-bold">Dr. Adeel Anwar</h3>
+          <p className="mt-2 font-semibold text-primary">Chemical Engineer, Scientific Researcher &amp; Holistic Naturopath</p>
+          <p className="mt-5 leading-relaxed text-muted-foreground">Dr. Adeel Anwar is a chemical engineer, scientific researcher, social entrepreneur, life coach, and holistic naturopath. He holds a First-Class MEng degree in Chemical Engineering with Business Management and a PhD in Chemical Engineering and Analytical Sciences from The University of Manchester, UK.</p>
+          <p className="mt-4 leading-relaxed text-muted-foreground">With a background spanning scientific research, entrepreneurship, education, and holistic health, he is passionate about personal development, optimal health, and empowering individuals through knowledge. He is also the author of <span className="font-semibold text-foreground">The Ultimate Bioreactor: The 4 Key Factors to Optimal Health</span>, published in 2018.</p>
+          <p className="mt-4 leading-relaxed text-muted-foreground">Through his work, Dr. Adeel Anwar brings together scientific knowledge, health awareness, and personal development to encourage a more informed and holistic approach to well-being.</p>
           <h4 className="mt-6 font-bold">What You Can Expect:</h4>
           <ul className="mt-3 space-y-3">{["Clear explanations of important health topics.", "Educational insights into health concerns and testing.", "Guidance on asking informed questions about your health."].map(item => <li key={item} className="flex items-start gap-3 text-sm"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><span>{item}</span></li>)}</ul>
           <p className="mt-6 font-semibold">Your health journey begins with knowledge.</p>
