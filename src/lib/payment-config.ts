@@ -3,22 +3,6 @@ export const PAYMENT_AMOUNT = "PKR 499";
 
 export const PAYMENT_METHODS = [
   {
-    id: "jazzcash",
-    name: "JazzCash",
-    fields: [
-      { label: "Account Holder Name", value: "[Account holder name]" },
-      { label: "JazzCash Number", value: "[03XX XXXXXXX]" },
-    ],
-  },
-  {
-    id: "easypaisa",
-    name: "Easypaisa",
-    fields: [
-      { label: "Account Holder Name", value: "[Account holder name]" },
-      { label: "Easypaisa Number", value: "[03XX XXXXXXX]" },
-    ],
-  },
-  {
     id: "bank",
     name: "Bank Transfer",
     fields: [

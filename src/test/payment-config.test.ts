@@ -7,6 +7,13 @@ describe("Webinar registration price", () => {
   });
 });
 
+describe("Payment methods offered", () => {
+  it("offers bank transfer only", () => {
+    expect(PAYMENT_METHODS.map((m) => m.id)).toEqual(["bank"]);
+    expect(PAYMENT_METHODS.map((m) => m.name)).toEqual(["Bank Transfer"]);
+  });
+});
+
 describe("Bank transfer account details", () => {
   const bank = PAYMENT_METHODS.find((m) => m.id === "bank")!;
   const value = (label: string) => bank.fields.find((f) => f.label === label)?.value;
