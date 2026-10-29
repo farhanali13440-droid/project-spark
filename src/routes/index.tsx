@@ -95,7 +95,7 @@ function Index() {
     <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5">
       <SectionHead label="MEET YOUR WEBINAR HOST" title="Learn From Dr. Adeel Anwar" text="Get a fresh perspective on important health topics and develop a better understanding of the questions surrounding your health." />
       <div className="mx-auto mt-10 max-w-4xl">
-        <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={hostAsset.url} alt="Dr. Adeel Anwar speaking at a health webinar" className="mx-auto h-auto max-h-[460px] w-full object-contain" /></div>
+        <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={hostAsset.url} alt="Dr. Adeel Anwar speaking at a health webinar" className="h-auto w-full" /></div>
         <p className="mt-3 text-center text-sm font-semibold">Dr. Adeel Anwar — sharing insights at a live health webinar</p>
         <div className="mx-auto mt-8 max-w-3xl">
           <h3 className="font-display text-3xl font-bold">Dr. Adeel Anwar</h3>
