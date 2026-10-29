@@ -22,10 +22,10 @@ export const PAYMENT_METHODS = [
     id: "bank",
     name: "Bank Transfer",
     fields: [
-      { label: "Bank Name", value: "[Bank name]" },
-      { label: "Account Holder Name", value: "[Account holder name]" },
-      { label: "Account Number", value: "[Account number]" },
-      { label: "IBAN", value: "[PKXX XXXX XXXX XXXX XXXX XXXX]" },
+      { label: "Bank Name", value: "Meezan Bank" },
+      { label: "Account Holder Name", value: "The Academy of Champions" },
+      { label: "Account Number", value: "02140106229369" },
+      { label: "IBAN", value: "PK11MEZN0002140106229369" },
     ],
   },
 ] as const;

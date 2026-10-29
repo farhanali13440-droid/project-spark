@@ -40,7 +40,7 @@ const audience = [
 ];
 const included = ["Live online webinar access", "All seven webinar topics", "Live Q&A session", "Testing guidance", "WhatsApp community access"];
 const faqs = [
-  { q: "Which payment methods can I use?", a: "You can select JazzCash, Easypaisa or bank transfer at checkout. The registration fee is PKR 499. Payment account details are awaiting confirmation." },
+  { q: "Which payment methods can I use?", a: "You can select JazzCash, Easypaisa or bank transfer at checkout. The registration fee is PKR 499. Bank transfer details (Meezan Bank) are shown on the checkout page; the JazzCash and Easypaisa numbers are still being confirmed." },
   { q: "How do I register for the webinar?", a: "Click Register Now, enter your contact details, then choose a payment method. Add your transaction ID and upload your payment screenshot to submit your registration." },
   { q: "How much does registration cost?", a: "Registration is a one-time payment of PKR 499 and includes the live webinar, all seven topics, live Q&A, testing guidance and community access." },
   { q: "How do I access the WhatsApp community?", a: "After submitting your registration, use the community button to open the community page. The WhatsApp invite link is awaiting confirmation and will be available there once added." },
