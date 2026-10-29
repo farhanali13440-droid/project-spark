@@ -41,8 +41,8 @@ const audience = [
 ];
 const included = ["Live online webinar access", "All seven webinar topics", "Live Q&A session", "Testing guidance", "WhatsApp community access"];
 const faqs = [
-  { q: "Which payment methods can I use?", a: "You can select JazzCash, Easypaisa or bank transfer at checkout. The registration fee is PKR 499. Bank transfer details (Meezan Bank) are shown on the checkout page; the JazzCash and Easypaisa numbers are still being confirmed." },
-  { q: "How do I register for the webinar?", a: "Click Register Now, enter your contact details, then choose a payment method. Add your transaction ID and upload your payment screenshot to submit your registration." },
+  { q: "Which payment methods can I use?", a: "You can pay by bank transfer to our Meezan Bank account. The registration fee is PKR 499. The account details (account title, account number and IBAN) are shown on the checkout page with copy buttons." },
+  { q: "How do I register for the webinar?", a: "Click Register Now, enter your contact details, then send the fee to the bank account shown and add your transaction ID with a payment screenshot to submit your registration." },
   { q: "How much does registration cost?", a: "Registration is a one-time payment of PKR 499 and includes the live webinar, all seven topics, live Q&A, testing guidance and community access." },
   { q: "How do I access the WhatsApp community?", a: "After submitting your registration, use the community button to open the community page. The WhatsApp invite link is awaiting confirmation and will be available there once added." },
   { q: "Can I ask Dr Adeel questions?", a: "Yes. The webinar includes a live Q&A session where you can raise your health-related questions." },
@@ -138,7 +138,7 @@ function Index() {
       <div className="mt-10 divide-y divide-border">{[
         {q:"What is the webinar registration fee?",a:<>The registration fee is just <strong className="text-foreground">PKR 499</strong>.</>},
         {q:"Which health topics will the webinar cover?",a:"The webinar will cover cancer, digestive disorders, unresolved health concerns, autism, PCOS, food allergy testing, and heavy metal testing."},
-        {q:"How can I pay the registration fee?",a:<>You can pay through <strong className="text-foreground">JazzCash, Easypaisa, or bank transfer</strong>. Payment instructions will be provided on the checkout page.</>},
+        {q:"How can I pay the registration fee?",a:<>You can pay by <strong className="text-foreground">bank transfer</strong> to our Meezan Bank account. The account details are shown on the checkout page.</>},
         {q:"How do I join the webinar community?",a:"After submitting your payment details and screenshot, you'll be directed to the WhatsApp community joining page."},
         {q:"Will I receive webinar updates?",a:"Yes. The WhatsApp community will be used to share important announcements and webinar joining instructions."},
         {q:"Is this webinar a substitute for medical consultation?",a:"No. This is an educational webinar. It does not replace professional medical advice, diagnosis, or treatment."},

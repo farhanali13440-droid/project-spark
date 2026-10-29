@@ -10,19 +10,18 @@ import {
   Landmark,
   Lock,
   ShieldCheck,
-  Smartphone,
   Upload,
   Video,
   Wallet,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { PAYMENT_AMOUNT, PAYMENT_METHODS, type PaymentMethodId } from "@/lib/payment-config";
+import { PAYMENT_AMOUNT, PAYMENT_METHODS } from "@/lib/payment-config";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({
     meta: [
       { title: "Checkout — Root-Cause Health Webinar" },
-      { name: "description", content: "Secure registration for the Root-Cause Health webinar. Pay PKR 499 via JazzCash, Easypaisa or bank transfer." },
+      { name: "description", content: "Secure registration for the Root-Cause Health webinar. Pay PKR 499 by bank transfer." },
       { property: "og:title", content: "Checkout — Root-Cause Health Webinar (PKR 499)" },
       { property: "og:description", content: "Enter your details and pay PKR 499 to reserve your webinar seat." },
       { property: "og:type", content: "website" },
@@ -44,7 +43,7 @@ const detailsSchema = z.object({
 type Details = z.infer<typeof detailsSchema>;
 
 const paySchema = z.object({
-  method: z.enum(["jazzcash", "easypaisa", "bank"]),
+  method: z.enum(["bank"]),
   transaction_id: z.string().trim().min(3, "Enter the transaction ID").max(100),
 });
 
@@ -71,7 +70,6 @@ function CheckoutPage() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [details, setDetails] = useState<Details | null>(null);
   const [prefill, setPrefill] = useState({ name: "", whatsapp: "", email: "" });
-  const [active, setActive] = useState<PaymentMethodId>("jazzcash");
   const [errors, setErrors] = useState<Errors>({});
   const [loading, setLoading] = useState(false);
   const [fileName, setFileName] = useState("");
@@ -138,7 +136,7 @@ function CheckoutPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  const method = PAYMENT_METHODS.find((m) => m.id === active)!;
+  const method = PAYMENT_METHODS[0];
 
   return (
     <div className="flex min-h-screen flex-col bg-secondary/40 text-foreground">
@@ -235,24 +233,16 @@ function CheckoutPage() {
                   <button type="button" onClick={() => setStep(1)} className="text-sm text-primary underline">Edit details</button>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Send exactly <strong className="text-foreground">{PAYMENT_AMOUNT}</strong> using one of the methods below, then enter your transaction ID and upload a screenshot.
+                  Send exactly <strong className="text-foreground">{PAYMENT_AMOUNT}</strong> to the bank account below, then enter your transaction ID and upload a screenshot.
                 </p>
-                <div className="grid grid-cols-3 gap-2">
-                  {PAYMENT_METHODS.map((m) => (
-                    <button
-                      key={m.id}
-                      type="button"
-                      onClick={() => setActive(m.id)}
-                      className={`flex flex-col items-center gap-1 rounded-2xl border px-2 py-3 text-sm font-semibold transition ${
-                        active === m.id ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground hover:bg-secondary"
-                      }`}
-                    >
-                      {m.id === "bank" ? <Landmark className="h-5 w-5" /> : <Smartphone className="h-5 w-5" />}
-                      {m.name}
-                    </button>
-                  ))}
+                <div className="flex items-center gap-3 rounded-2xl border border-primary/30 bg-primary/5 px-4 py-3">
+                  <Landmark className="h-5 w-5 shrink-0 text-primary" />
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">{method.name}</p>
+                    <p className="text-xs text-muted-foreground">Account details are listed below</p>
+                  </div>
                 </div>
-                <input type="hidden" name="method" value={active} />
+                <input type="hidden" name="method" value={method.id} />
                 <dl className="space-y-2">
                   {method.fields.map((f) => (
                     <div key={f.label} className="flex items-center justify-between gap-3 rounded-2xl bg-secondary/60 px-4 py-3">
