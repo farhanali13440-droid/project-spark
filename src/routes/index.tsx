@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Activity, ArrowRight, Baby, CheckCircle2, ChevronDown, FlaskConical, HeartPulse, HelpCircle, MessageCircleQuestion, MonitorPlay, Sparkles, Stethoscope, UserRound, Users, Wheat } from "lucide-react";
+import { Activity, ArrowRight, Baby, CheckCircle2, ChevronDown, FlaskConical, HeartPulse, HelpCircle, MessageCircleQuestion, MonitorPlay, Sparkles, Stethoscope, Users, Wheat } from "lucide-react";
 import logoAsset from "@/assets/academy-logo.jpg.asset.json";
+import hostAsset from "@/assets/dr-adeel-anwar.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { PAYMENT_AMOUNT } from "@/lib/payment-config";
 
@@ -94,7 +95,7 @@ function Index() {
     <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5">
       <SectionHead label="MEET YOUR WEBINAR HOST" title="Learn From Dr. Adeel Anwar" text="Get a fresh perspective on important health topics and develop a better understanding of the questions surrounding your health." />
       <div className="mx-auto mt-10 grid max-w-4xl gap-8 sm:grid-cols-[240px_1fr] sm:items-center">
-        <div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 rounded-lg border border-border bg-card text-muted-foreground"><UserRound className="h-20 w-20 stroke-1" /><p className="text-sm">Host photo coming soon</p></div>
+        <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={hostAsset.url} alt="Dr. Adeel Anwar speaking at a health webinar" className="aspect-[4/5] h-full w-full object-cover" /></div>
         <div>
           <h3 className="font-display text-3xl font-bold">Dr. Adeel Anwar</h3>
           <p className="mt-2 font-semibold text-primary">Chemical Engineer, Scientific Researcher &amp; Holistic Naturopath</p>
