@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { Activity, ArrowRight, Baby, CheckCircle2, ChevronDown, FlaskConical, HeartPulse, HelpCircle, MessageCircleQuestion, MonitorPlay, Sparkles, Stethoscope, Users, Wheat } from "lucide-react";
 import logoAsset from "@/assets/academy-logo.jpg.asset.json";
-import hostAsset from "@/assets/dr-adeel-anwar.jpg.asset.json";
+import hostAsset from "@/assets/dr-adeel-full.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { PAYMENT_AMOUNT } from "@/lib/payment-config";
 
@@ -94,9 +94,10 @@ function Index() {
     {/* 5. Meet your webinar host */}
     <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5">
       <SectionHead label="MEET YOUR WEBINAR HOST" title="Learn From Dr. Adeel Anwar" text="Get a fresh perspective on important health topics and develop a better understanding of the questions surrounding your health." />
-      <div className="mx-auto mt-10 grid max-w-4xl gap-8 sm:grid-cols-[280px_1fr] sm:items-start">
-        <div><div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={hostAsset.url} alt="Dr. Adeel Anwar speaking at a health webinar" className="aspect-[4/5] h-full w-full object-cover" /></div><p className="mt-3 text-center text-sm font-semibold">Dr. Adeel Anwar</p></div>
-        <div>
+      <div className="mx-auto mt-10 max-w-4xl">
+        <div className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={hostAsset.url} alt="Dr. Adeel Anwar speaking at a health webinar" className="h-auto w-full" /></div>
+        <p className="mt-3 text-center text-sm font-semibold">Dr. Adeel Anwar — sharing insights at a live health webinar</p>
+        <div className="mx-auto mt-8 max-w-3xl">
           <h3 className="font-display text-3xl font-bold">Dr. Adeel Anwar</h3>
           <p className="mt-2 font-semibold text-primary">Chemical Engineer, Scientific Researcher &amp; Holistic Naturopath</p>
           <p className="mt-5 leading-relaxed text-muted-foreground">Dr. Adeel Anwar is a chemical engineer, scientific researcher, social entrepreneur, life coach, and holistic naturopath. He holds a First-Class MEng degree in Chemical Engineering with Business Management and a PhD in Chemical Engineering and Analytical Sciences from The University of Manchester, UK.</p>
