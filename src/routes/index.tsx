@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Activity, ArrowRight, Baby, CheckCircle2, ChevronDown, FlaskConical, HeartPulse, HelpCircle, MessageCircleQuestion, MonitorPlay, Sparkles, Stethoscope, Users, Wheat } from "lucide-react";
 import logoAsset from "@/assets/academy-logo.jpg.asset.json";
 import hostAsset from "@/assets/dr-adeel-full.jpg.asset.json";
+import speakingAsset from "@/assets/dr-adeel-speaking.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { PAYMENT_AMOUNT } from "@/lib/payment-config";
 
@@ -95,9 +96,15 @@ function Index() {
     <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-6xl px-5">
       <SectionHead label="MEET YOUR WEBINAR HOST" title="Learn From Dr. Adeel Anwar" text="Get a fresh perspective on important health topics and develop a better understanding of the questions surrounding your health." />
       <div className="mx-auto mt-10 grid max-w-5xl gap-8 md:grid-cols-[340px_1fr] md:items-start lg:grid-cols-[420px_1fr] lg:gap-12">
-        <div>
-          <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={hostAsset.url} alt="Dr. Adeel Anwar speaking at a health webinar" className="h-auto w-full" /></div>
-          <p className="mt-3 text-center text-sm font-semibold">Dr. Adeel Anwar — sharing insights at a live health webinar</p>
+        <div className="space-y-6">
+          <div>
+            <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={hostAsset.url} alt="Dr. Adeel Anwar speaking at a health webinar" className="h-auto w-full" /></div>
+            <p className="mt-3 text-center text-sm font-semibold">Dr. Adeel Anwar — sharing insights at a live health webinar</p>
+          </div>
+          <div>
+            <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={speakingAsset.url} alt="Dr. Adeel Anwar presenting a Healing Hive workshop at The Academy of Champions" className="h-auto w-full" /></div>
+            <p className="mt-3 text-center text-sm font-semibold">Dr. Adeel Anwar — leading a live Healing Hive workshop</p>
+          </div>
         </div>
         <div>
           <h3 className="font-display text-3xl font-bold">Dr. Adeel Anwar</h3>
