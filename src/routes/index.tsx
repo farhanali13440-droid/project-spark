@@ -96,7 +96,7 @@ function Index() {
       <SectionHead label="MEET YOUR WEBINAR HOST" title="Learn From Dr. Adeel Anwar" text="Get a fresh perspective on important health topics and develop a better understanding of the questions surrounding your health." />
       <div className="mx-auto mt-10 grid max-w-5xl gap-8 md:grid-cols-[340px_1fr] md:items-start lg:grid-cols-[420px_1fr] lg:gap-12">
         <div>
-          <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={speakingAsset.url} alt="Dr. Adeel Anwar presenting a Healing Hive workshop at The Academy of Champions" className="h-auto w-full" /></div>
+          <div className="aspect-square overflow-hidden rounded-xl border border-border bg-card shadow-sm"><img src={speakingAsset.url} alt="Dr. Adeel Anwar presenting a Healing Hive workshop at The Academy of Champions" className="h-full w-full object-cover object-left" /></div>
           <p className="mt-3 text-center text-sm font-semibold">Dr. Adeel Anwar — leading a live Healing Hive workshop</p>
         </div>
         <div>
