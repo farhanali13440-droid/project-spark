@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Bell, ClipboardList, Megaphone } from "lucide-react";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/community-config";
 import { useEffect } from "react";
-import { consumeRegistrationComplete, track, WEBINAR_VALUE, WEBINAR_NAME } from "@/lib/meta-pixel";
+import { consumeRegistrationComplete, track, trackCustom, WEBINAR_VALUE, WEBINAR_NAME } from "@/lib/meta-pixel";
 
 export const Route = createFileRoute("/community")({
   head: () => ({
@@ -62,6 +62,7 @@ function CommunityPage() {
               href={WHATSAPP_COMMUNITY_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => void trackCustom("WhatsAppJoinClick")}
               className="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-full bg-whatsapp px-8 py-5 text-lg font-bold text-whatsapp-foreground shadow-lg shadow-whatsapp/30 transition hover:-translate-y-0.5 hover:shadow-xl sm:w-auto"
             >
               <WhatsAppIcon className="h-6 w-6" /> Join Our WhatsApp Community

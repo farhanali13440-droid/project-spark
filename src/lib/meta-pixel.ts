@@ -101,3 +101,10 @@ export function consumeRegistrationComplete(): boolean {
     return false;
   }
 }
+
+export async function trackCustom(event: string, params?: Record<string, unknown>) {
+  if (!(await isAllowed())) return;
+  load();
+  if (params) window.fbq?.("trackCustom", event, params);
+  else window.fbq?.("trackCustom", event);
+}
