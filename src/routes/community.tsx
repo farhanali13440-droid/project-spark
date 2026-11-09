@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Bell, ClipboardList, Megaphone } from "lucide-react";
 import { WHATSAPP_COMMUNITY_URL } from "@/lib/community-config";
+import { useEffect } from "react";
+import { consumeRegistrationComplete, track, WEBINAR_VALUE, WEBINAR_NAME } from "@/lib/meta-pixel";
 
 export const Route = createFileRoute("/community")({
   head: () => ({
@@ -32,6 +34,11 @@ const BENEFITS = [
 
 function CommunityPage() {
   const hasLink = WHATSAPP_COMMUNITY_URL.trim().length > 0;
+  useEffect(() => {
+    if (consumeRegistrationComplete()) {
+      void track("Purchase", { ...WEBINAR_VALUE, content_name: WEBINAR_NAME, content_type: "product" });
+    }
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">

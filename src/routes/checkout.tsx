@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { PAYMENT_AMOUNT, PAYMENT_METHODS } from "@/lib/payment-config";
+import { track, markRegistrationComplete, WEBINAR_VALUE, WEBINAR_NAME } from "@/lib/meta-pixel";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({
@@ -75,6 +76,10 @@ function CheckoutPage() {
   const [fileName, setFileName] = useState("");
 
   useEffect(() => {
+    void track("InitiateCheckout", { ...WEBINAR_VALUE, content_name: WEBINAR_NAME, content_type: "product" });
+  }, []);
+
+  useEffect(() => {
     try {
       const r = JSON.parse(localStorage.getItem("currentRegistration") ?? "null");
       if (r) setPrefill({ name: r.name ?? "", whatsapp: r.whatsapp ?? "", email: r.email ?? "" });
@@ -132,6 +137,8 @@ function CheckoutPage() {
       setErrors({ form: "Could not submit. Please try again." });
       return;
     }
+    void track("CompleteRegistration", { ...WEBINAR_VALUE, content_name: WEBINAR_NAME });
+    markRegistrationComplete();
     setStep(3);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
