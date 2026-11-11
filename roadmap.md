@@ -1,0 +1,3 @@
+- [x] Add date, time and countdown to the registration offer and final registration section.
+- [x] Add date, time and countdown to checkout, and the schedule to FAQs.
+- [x] Check the added displays on desktop and mobile.

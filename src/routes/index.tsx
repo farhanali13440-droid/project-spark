@@ -6,6 +6,7 @@ import speakingAsset from "@/assets/dr-adeel-speaking.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { PAYMENT_AMOUNT } from "@/lib/payment-config";
 import { WebinarSchedule } from "@/components/WebinarSchedule";
+import { WEBINAR_DATE_LABEL, WEBINAR_TIME_LABEL } from "@/lib/webinar-config";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -131,6 +132,7 @@ function Index() {
         <div className="rounded-xl border border-border bg-card p-7 text-center shadow-sm">
           <p className="text-sm font-bold uppercase tracking-wide text-primary">YOUR REGISTRATION FEE</p>
           <div className="mt-5 flex items-center justify-center gap-3"><span className="text-xl text-muted-foreground line-through">PKR 999</span><span className="font-display text-4xl font-bold text-primary">PKR 499</span></div>
+          <WebinarSchedule centered />
           <Cta className="mt-7 w-full">Get Access for PKR 499</Cta>
           <p className="mt-4 text-xs text-muted-foreground">Click below to continue to checkout and complete your registration.</p>
         </div>
@@ -141,6 +143,7 @@ function Index() {
     <section className="bg-secondary/50 py-16 sm:py-20"><div className="mx-auto max-w-3xl px-5">
       <SectionHead label="GOT QUESTIONS? WE HAVE ANSWERS." title="Frequently Asked Questions" />
       <div className="mt-10 divide-y divide-border">{[
+        {q:"When is the webinar?",a:<>Join us on <strong className="text-foreground">{WEBINAR_DATE_LABEL}</strong>, from <strong className="text-foreground">{WEBINAR_TIME_LABEL}</strong>.</>},
         {q:"What is the webinar registration fee?",a:<>The registration fee is just <strong className="text-foreground">PKR 499</strong>.</>},
         {q:"Which health topics will the webinar cover?",a:"The webinar will cover cancer, digestive disorders, unresolved health concerns, autism, PCOS, food allergy testing, and heavy metal testing."},
         {q:"How can I pay the registration fee?",a:<>You can pay by <strong className="text-foreground">bank transfer</strong> to our Meezan Bank account. The account details are shown on the checkout page.</>},
@@ -165,6 +168,7 @@ function Index() {
       <p className="mt-8 text-sm font-bold uppercase tracking-wide">YOUR WEBINAR ACCESS</p>
       <div className="mt-3 flex items-center justify-center gap-3"><span className="text-xl opacity-75 line-through">PKR 999</span><span className="font-display text-4xl font-bold">PKR 499</span></div>
       <p className="mt-4 opacity-90">Get access to the educational webinar and join the WhatsApp community for important announcements and joining instructions.</p>
+      <WebinarSchedule centered inverse />
       <Cta className="mt-6 bg-accent text-accent-foreground hover:bg-accent/90">Register Now — PKR 499</Cta>
       <p className="mt-4 text-sm opacity-90">Click below to continue to checkout and complete your registration.</p>
       <p className="mt-5 text-sm font-semibold">Take the first step toward becoming a more informed health advocate.</p>

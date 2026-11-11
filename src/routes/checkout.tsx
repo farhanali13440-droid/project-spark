@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { PAYMENT_AMOUNT, PAYMENT_METHODS } from "@/lib/payment-config";
+import { WebinarSchedule } from "@/components/WebinarSchedule";
 import { track, markRegistrationComplete, WEBINAR_VALUE, WEBINAR_NAME } from "@/lib/meta-pixel";
 
 export const Route = createFileRoute("/checkout")({
@@ -166,6 +167,7 @@ function CheckoutPage() {
               <span className="flex items-center gap-1.5"><Video className="h-4 w-4 text-primary" /> Live online + Q&amp;A</span>
               <span className="flex items-center gap-1.5"><Wallet className="h-4 w-4 text-primary" /> {PAYMENT_AMOUNT}</span>
             </div>
+            <WebinarSchedule />
           </div>
           <div className="flex items-center gap-2 font-display font-bold">
             <img src={logoAsset.url} alt="The Academy of Champions" className="h-16 w-auto mix-blend-multiply" />
