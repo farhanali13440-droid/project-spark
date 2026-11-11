@@ -1,3 +1,6 @@
 - [x] Add date, time and countdown to the registration offer and final registration section.
 - [x] Add date, time and countdown to checkout, and the schedule to FAQs.
 - [x] Check the added displays on desktop and mobile.
+- [x] Expand email/password admin access with an editable profile.
+- [x] Show every submitted registration field, screenshot, status and review notes with search and filters.
+- [ ] Verify authenticated registration review and profile updates — blocked until the owner creates and confirms the first admin account; no auth users exist.
