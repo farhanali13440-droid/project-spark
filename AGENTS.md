@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - The sale page reads its registration price from the shared payment configuration so checkout and promotional offers stay consistent.
+- Keep webinar schedule and countdown calculations in a shared timezone-explicit configuration; initialize the ticking clock after hydration to avoid server/client mismatches.

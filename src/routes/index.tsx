@@ -5,6 +5,7 @@ import logoAsset from "@/assets/academy-logo.jpg.asset.json";
 import speakingAsset from "@/assets/dr-adeel-speaking.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { PAYMENT_AMOUNT } from "@/lib/payment-config";
+import { WebinarSchedule } from "@/components/WebinarSchedule";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -68,6 +69,7 @@ function Index() {
         <p className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-primary"><MonitorPlay className="h-4 w-4" />EXCLUSIVE HEALTH EDUCATION WEBINAR</p>
         <h1 className="mt-5 max-w-4xl font-display text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">How to Take Control of Your Health Without Relying on Endless Medications</h1>
         <p className="mt-5 max-w-2xl text-lg text-muted-foreground">Understand complex health concerns, explore important health topics, and learn how to make more informed decisions about your health.</p>
+        <WebinarSchedule />
         <p className="mt-7 font-bold">IN THIS WEBINAR, WE'LL EXPLORE:</p>
         <div className="mt-4 flex max-w-3xl flex-wrap gap-x-5 gap-y-3">
           {["Cancer & Digestive Disorders", "PCOS & Autism", "Food Allergy & Heavy Metal Testing", "When Doctors Haven't Found the Answers"].map(item => <span key={item} className="flex items-center gap-2 text-sm font-semibold"><CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />{item}</span>)}
