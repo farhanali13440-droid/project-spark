@@ -46,7 +46,16 @@ function isAllowed(): Promise<boolean> {
   return allowedPromise;
 }
 
+// Landing page (home) only: sent right after PageView, once per landing page load.
+export const VIEW_CONTENT_PARAMS = {
+  content_name: WEBINAR_NAME,
+  content_type: "product",
+  value: WEBINAR_VALUE.value,
+  currency: WEBINAR_VALUE.currency,
+} as const;
+
 let lastPath: string | null = null;
+let viewContentSent = false;
 let loaded = false;
 
 function load() {
@@ -81,6 +90,11 @@ export function trackPageView(pathname: string) {
   if (pathname === lastPath) return;
   lastPath = pathname;
   void track("PageView");
+  // Landing page (home) only: ViewContent right after PageView, once per load.
+  if (pathname === "/" && !viewContentSent) {
+    viewContentSent = true;
+    void track("ViewContent", { ...VIEW_CONTENT_PARAMS });
+  }
 }
 
 export function markRegistrationComplete() {
