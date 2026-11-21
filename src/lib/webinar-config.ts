@@ -1,7 +1,7 @@
-export const WEBINAR_START = "2026-11-22T19:00:00+05:00";
-export const WEBINAR_END = "2026-11-22T20:00:00+05:00";
-export const WEBINAR_DATE_LABEL = "Sunday, 22 November 2026";
-export const WEBINAR_TIME_LABEL = "7:00 PM – 8:00 PM (Pakistan time)";
+export const WEBINAR_START = "2026-11-24T20:00:00+05:00";
+export const WEBINAR_END = "2026-11-24T21:00:00+05:00";
+export const WEBINAR_DATE_LABEL = "Tuesday, 24 November 2026";
+export const WEBINAR_TIME_LABEL = "8:00 PM – 9:00 PM (Pakistan time)";
 
 export function getWebinarCountdown(now: number) {
   const secondsRemaining = Math.max(0, Math.floor((Date.parse(WEBINAR_START) - now) / 1000));
